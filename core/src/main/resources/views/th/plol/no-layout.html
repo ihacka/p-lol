@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:across="http://across.foreach.be">
+<head>
+    <title>Custom page</title>
+    <link rel="stylesheet" type="text/css" across:static="/plol/css/main.css"/>
+</head>
+<body>
+
+<p>
+This is a very ugly custom page that does not use the default layout.<br/>
+This page registers its own javascript and css directly in the Thymeleaf template.
+</p>
+
+<a th:href="@{/}">Back to the pretty homepage</a>
+
+<script type="text/javascript" across:static="/plol/js/plol.js"></script>
+
+</body>
+</html>

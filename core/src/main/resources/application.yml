@@ -1,0 +1,25 @@
+acrossHibernate:
+  create-unit-of-work-factory: true
+
+adminWebModule:
+  login:
+    rememberMe:
+      key: plol-changeme
+  root-path: /admin
+
+applicationInfo:
+  applicationId: plol
+  applicationName: Plol
+
+debugWebModule:
+  root-path: /debug
+  security:
+    password: plol-changeme
+
+logging:
+  request-response:
+    enabled: true
+
+userModule:
+  require-email-unique: true
+

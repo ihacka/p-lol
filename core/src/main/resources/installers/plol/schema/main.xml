@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<!--
+		Usually table names would have a module prefix to avoid clashes with tables from other modules.
+		When changing the table name, don't forget to modify the annotation values on the corresponding entities!
+	-->
+	<property name="table.blog_post" value="ax_blog_post"/>
+	<property name="table.author" value="ax_author"/>
+
+	<!-- Install custom sequence table used by AcrossSequenceGenerator.STRATEGY. -->
+	<include file="com/foreach/across/core/installers/AcrossSequencesInstaller.xml"/>
+
+	<!-- Default snippet for Oracle that ensures specified text lengths use CHAR instead of BYTE length -->
+	<changeSet id="201406141719" author="start-across" runAlways="true" dbms="oracle">
+		<sql>
+			ALTER session SET nls_length_semantics=CHAR;
+		</sql>
+	</changeSet>
+
+	<!-- Create the authors table -->
+	<changeSet id="201711021316" author="start-across">
+		<preConditions>
+			<not>
+				<tableExists tableName="${table.author}"/>
+			</not>
+		</preConditions>
+
+		<comment>Creates author table</comment>
+
+		<createTable tableName="${table.author}">
+			<column name="id" type="java.sql.Types.BIGINT">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="pk_ax_author"/>
+			</column>
+			<column name="name" type="java.sql.Types.NVARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="email" type="java.sql.Types.VARCHAR(255)"/>
+		</createTable>
+	</changeSet>
+
+	<!-- Create the blogs table -->
+	<changeSet id="201711021320" author="start-across">
+		<preConditions>
+			<not>
+				<tableExists tableName="${table.blog_post}"/>
+			</not>
+		</preConditions>
+
+		<comment>Creates blog table</comment>
+
+		<createTable tableName="${table.blog_post}">
+			<column name="id" type="java.sql.Types.BIGINT">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="pk_ax_bpost"/>
+			</column>
+			<column name="title" type="java.sql.Types.NVARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="image_url" type="java.sql.Types.NVARCHAR(255)"/>
+			<column name="sub_title" type="java.sql.Types.NVARCHAR(255)"/>
+			<column name="body" type="java.sql.Types.CLOB"/>
+			<column name="published" type="java.sql.Types.BOOLEAN" defaultValueBoolean="false">
+				<constraints nullable="false"/>
+			</column>
+			<column name="publication_date" type="java.sql.Types.TIMESTAMP"/>
+			<column name="author_id" type="java.sql.Types.BIGINT">
+				<constraints nullable="false" foreignKeyName="fk_ax_bpost_author"
+				             referencedTableName="${table.author}" referencedColumnNames="id"/>
+			</column>
+		</createTable>
+
+		<createIndex tableName="${table.blog_post}" indexName="ix_ax_bpost_pub_date">
+			<column name="publication_date"/>
+		</createIndex>
+
+		<createIndex tableName="${table.blog_post}" indexName="ix_ax_bpost_author">
+			<column name="author_id"/>
+		</createIndex>
+	</changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Homepage</title>
+</head>
+<body>
+This part of the content will be ignored...
+
+<!--/*
+The content fragment will be included in the layout.  The wrapping div will be ignored.
+*/-->
+<th:block th:fragment="content">
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" th:style="${'background-image: url(' + #webapp.path('@static:/plol/img/home-bg.jpg') + ')'}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Hello Across!</h1>
+                        <hr class="small">
+                        <span class="subheading" th:text="#{sample.message}">A message from your message source</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <th:block th:each="post : ${blogsPage.content}">
+                    <div class="post-preview">
+                        <a th:href="@{${'/post/' + post.id}}">
+                            <h2 class="post-title" th:text="${post.title}">
+                                Man must explore, and this is exploration at its greatest
+                            </h2>
+                            <h3 class="post-subtitle" th:if="${post.subTitle}" th:text="${post.subTitle}">
+                                Clicking this block will open a controller without the template applied.
+                            </h3>
+                        </a>
+                        <p class="post-meta">Posted by <a href="#" th:text="${post.author.name}">Across</a>
+                            on [[${#dates.format(post.publicationSettings.publicationDate,'MMMM d, yyyy')}]]</p>
+                    </div>
+                    <hr>
+                </th:block>
+
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="previous" th:unless="${blogsPage.first}">
+                        <a th:href="@{/(page=${blogsPage.previousPageable().pageNumber})}">&larr; Newer Posts</a>
+                    </li>
+                    <li class="next" th:unless="${blogsPage.last}">
+                        <a th:href="@{/(page=${blogsPage.nextPageable().pageNumber})}">Older Posts &rarr;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</th:block>
+
+<!--/*
+We define an (optional) fragment that holds some javascript links that should be added after the scripts
+ that have been set using the WebResourceRegistry.  This illustrates the ability to register resources using
+ either backend code or directly in frontend templates.
+
+In this example we only have one script so we put the fragment attribute directly on it.
+If we wanted to include multiple scripts we would have to wrap them in a th:block and
+put the fragment identifier on the block.
+*/-->
+<script type="text/javascript" th:fragment="javascript-page-end">
+    console.log("Static resources path registered by the backend: " + Across.AcrossWebModule.staticPath);
+</script>
+
+</body>
+</html>
