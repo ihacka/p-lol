@@ -1,9 +1,7 @@
 package io.ilot.plol.controller;
 
-import io.ilot.plol.event.IncidentApplicationEvent;
 import io.ilot.plol.event.PlolEventPublisher;
 import io.ilot.plol.model.Bet;
-import io.ilot.plol.model.Incident;
 import io.ilot.plol.model.User;
 import io.ilot.plol.repos.BetRepository;
 import io.ilot.plol.repos.IncidentRepository;
@@ -11,18 +9,15 @@ import io.ilot.plol.repos.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-class Controller implements ApplicationListener<IncidentApplicationEvent> {
+class Controller /*implements ApplicationListener<IncidentApplicationEvent>*/ {
     private Logger logger = LoggerFactory.getLogger(Controller.class);
 
     @Autowired
@@ -31,6 +26,8 @@ class Controller implements ApplicationListener<IncidentApplicationEvent> {
     private BetRepository betRepository;
     @Autowired
     private IncidentRepository incidentRepository;
+    @Autowired
+    PlolEventPublisher plolEventPublisher;
 
     @RequestMapping("/hello/{name}")
     public String hello(@PathVariable String name) {
@@ -75,30 +72,4 @@ class Controller implements ApplicationListener<IncidentApplicationEvent> {
         plolEventPublisher.play();
     }
 
-    @Autowired
-    PlolEventPublisher plolEventPublisher;
-
-
-    @MessageMapping("/play")
-    @SendTo("/topic/play")
-    public Incident play(IncidentApplicationEvent applicationEvent) throws Exception {
-        final Incident incident = applicationEvent.getIncident();
-        logger.info("....to topic {}", incident);
-        Thread.sleep(5000);
-        logger.info("Publising to topic/play {}", incident);
-        return incident;
-    }
-
-    private void delaydas(long time){
-    }
-
-    @Override
-    public void onApplicationEvent(IncidentApplicationEvent applicationEvent) {
-        logger.info("Listening for application events " + applicationEvent );
-        try {
-            play(applicationEvent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
