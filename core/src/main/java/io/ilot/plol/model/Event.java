@@ -17,6 +17,12 @@ public class Event {
     @GeneratedValue
     private Long id;
     private String name;
+    private String betStatus;
+    private Long kickOff;
+    private String matchTime;
+    private Integer redCardsHome;
+    private Integer redCardsAway;
+
 
     @OneToMany(mappedBy = "event")
     private List<Market> markets;

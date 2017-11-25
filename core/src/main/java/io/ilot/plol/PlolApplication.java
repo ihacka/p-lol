@@ -3,6 +3,7 @@ package io.ilot.plol;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import io.ilot.plol.model.*;
+import io.ilot.plol.repos.EventRepository;
 import io.ilot.plol.repos.IncidentRepository;
 import io.ilot.plol.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,8 @@ public class PlolApplication {
             ).forEach(ir::save);
         };
     }
+
+
 
     @Bean
     public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
