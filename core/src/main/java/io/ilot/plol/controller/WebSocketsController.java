@@ -8,6 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebSocketsController {
     final Logger logger = LoggerFactory.getLogger(WebSocketsController.class);
 
+    public enum WebSocketTopic {
+        PLAY("/topic/play");
+
+        private String topicName;
+        WebSocketTopic(String topicName){
+            this.topicName = topicName;
+        }
+        public String topicName(){
+            return topicName;
+        }
+    }
+
     //this would create an endpoint for clients to send Incident type of data
 
 //    @MessageMapping("/incident")
