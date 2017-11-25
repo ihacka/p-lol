@@ -1,0 +1,9 @@
+
+<BetradarLiveOdds timestamp="1511011106813" status="clearbet" time="7" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="paused" active="1" betstatus="started" earlybetstatus="stopped" clearedscore="2:0" msgnr="590" cornershome="4" cornersaway="0" yellowcardshome="2" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Odds id="308117900" type="ftnw" subtype="128" specialoddsvalue="5.5" freetext="1st Half - Total Corners" combination="0" active="1" typeid="8">
+<OddsField type="under" outcome="1" active="1"/>
+<OddsField type="over" outcome="0" active="1"/>
+</Odds>
+</Match>
+</BetradarLiveOdds>

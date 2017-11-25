@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<pitchconditions id="1" name="GOOD"/>
+<events>
+<event extrainfo="1" id="1206558318" info="Pitch condition: GOOD" matchscore="0:0" mtime="00:00" side="none" stime="1511007318339" type="1014"/>
+</events>
+</match>

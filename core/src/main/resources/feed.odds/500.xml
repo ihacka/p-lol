@@ -1,0 +1,33 @@
+
+<BetradarLiveOdds timestamp="1511009728380" status="alive" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="12032182" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="7"/>
+<Match matchid="12146818" status="ended" active="1" betstatus="stopped" earlybetstatus="stopped" score="2:1" setscore1="0:0" setscore2="2:1" msgnr="289"/>
+<Match matchid="12124806" status="1p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="25" score="0:1" setscore1="0:1" msgnr="70" cornershome="5" cornersaway="2" yellowcardshome="0" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="12055288" status="paused" active="1" betstatus="started" earlybetstatus="stopped" score="2:0" setscore1="2:0" msgnr="618" cornershome="4" cornersaway="1" yellowcardshome="2" yellowcardsaway="2" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="12743326" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="20"/>
+<Match matchid="11942514" status="ended" active="1" betstatus="stopped" earlybetstatus="stopped" score="0:1" setscore1="0:0" setscore2="0:1" msgnr="257"/>
+<Match matchid="11942510" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="3"/>
+<Match matchid="12004528" status="ended" active="1" betstatus="stopped" earlybetstatus="stopped" score="0:0" setscore1="0:0" setscore2="0:0" msgnr="285" cornershome="11" cornersaway="5" yellowcardshome="0" yellowcardsaway="3" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="11809960" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="4"/>
+<Match matchid="12305546" status="1p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="16" score="0:0" setscore1="0:0" msgnr="50" cornershome="0" cornersaway="0" yellowcardshome="0" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="12305550" status="1p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="10" score="0:0" setscore1="0:0" msgnr="26" cornershome="1" cornersaway="0" yellowcardshome="1" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="11830376" status="1p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="25" score="0:0" setscore1="0:0" msgnr="250" cornershome="2" cornersaway="0" yellowcardshome="0" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="11865588" status="ended" active="1" betstatus="stopped" earlybetstatus="stopped" score="1:1" setscore1="0:1" setscore2="1:0" msgnr="1018" cornershome="5" cornersaway="5" yellowcardshome="1" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="11142427" status="2p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="69" score="1:2" setscore1="1:2" setscore2="0:0" msgnr="229"/>
+<Match matchid="11142429" status="2p" active="1" betstatus="stopped" earlybetstatus="stopped" matchtime="69" score="0:0" setscore1="0:0" setscore2="0:0" msgnr="202"/>
+<Match matchid="12379780" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="4" cornershome="0" cornersaway="0" yellowcardshome="0" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="12379782" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="4" cornershome="0" cornersaway="0" yellowcardshome="0" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="12260998" status="2p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="90" score="2:3" setscore1="2:2" setscore2="0:1" msgnr="368"/>
+<Match matchid="11947580" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="3"/>
+<Match matchid="11914798" status="paused" active="1" betstatus="started" earlybetstatus="stopped" score="1:1" setscore1="1:1" msgnr="518" cornershome="1" cornersaway="2" yellowcardshome="0" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="11882068" status="1p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="25" score="0:0" setscore1="0:0" msgnr="56" cornershome="0" cornersaway="2" yellowcardshome="0" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="11947590" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="5"/>
+<Match matchid="11947586" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="3"/>
+<Match matchid="11947584" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="3"/>
+<Match matchid="11947596" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="6"/>
+<Match matchid="11102083" status="paused" active="1" betstatus="started" earlybetstatus="stopped" score="0:1" setscore1="0:1" msgnr="147"/>
+<Match matchid="11966336" status="1p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="22" score="0:0" setscore1="0:0" msgnr="60"/>
+<Match matchid="11915008" status="paused" active="1" betstatus="started" earlybetstatus="stopped" score="0:0" setscore1="0:0" msgnr="136" cornershome="1" cornersaway="3" yellowcardshome="0" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+<Match matchid="11966328" status="1p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="24" score="1:0" setscore1="1:0" msgnr="86"/>
+<Match matchid="11915130" status="paused" active="1" betstatus="started" earlybetstatus="stopped" score="1:0" setscore1="1:0" msgnr="138" cornershome="4" cornersaway="3" yellowcardshome="0" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0"/>
+</BetradarLiveOdds>

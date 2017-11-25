@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<corners t1="1" t2="0"/>
+<events>
+<event extrainfo="1" id="1206642856" info="Corner kick [T1] -G.Xhaka" matchscore="0:0" mtime="21:28" player1="117777" posx="95" posy="90" side="home" stime="1511009522859" type="154"/>
+</events>
+</match>

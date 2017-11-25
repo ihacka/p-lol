@@ -1,0 +1,9 @@
+
+<BetradarLiveOdds timestamp="1511012411444" status="clearbet" time="0" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="2p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="53" clearedscore="2:0" msgnr="641" cornershome="5" cornersaway="0" yellowcardshome="3" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Odds id="308117882" type="ftnw" subtype="159" specialoddsvalue="2.5" freetext="Bookings Hometeam" combination="0" active="1" typeid="8">
+<OddsField type="under" outcome="0" active="1"/>
+<OddsField type="over" outcome="1" active="1"/>
+</Odds>
+</Match>
+</BetradarLiveOdds>

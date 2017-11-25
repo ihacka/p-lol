@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<weatherconditions id="2" name="MEDIUM"/>
+<events>
+<event extrainfo="2" id="1206647408" info="Weather: MEDIUM" matchscore="0:0" mtime="25:17" side="none" stime="1511009752386" type="164"/>
+</events>
+</match>

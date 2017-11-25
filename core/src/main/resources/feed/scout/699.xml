@@ -1,0 +1,6 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<events>
+<event automatic="1" extrainfo="1" id="1206672790" info="Enable booking markets" matchscore="1:0" mtime="37:45" side="none" stime="1511010499879" type="1083"/>
+</events>
+</match>

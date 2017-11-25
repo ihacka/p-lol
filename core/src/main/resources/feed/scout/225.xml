@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="deltaupdate" matchid="11830376">
+<injuries t1="0" t2="1"/>
+<events>
+<event extrainfo="0" id="1206615680" info="Injury [T2] -D.Alli" matchscore="0:0" mtime="09:31" player1="198028" posx="65" posy="73" side="away" stime="1511008805929" type="158"/>
+</events>
+</match>

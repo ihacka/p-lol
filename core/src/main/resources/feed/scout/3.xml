@@ -1,0 +1,27 @@
+
+<match betstatus="BETSTOP" connectionstatus="1" coveredfrom="tv" dc="1" distance="12" extrainfo="0" feedtype="full" matchid="11830376" matchtime="00:00" st1id="42" st2id="33" start="1511008200000" t1id="4871" t1name="ARSENAL FC" t2id="5187" t2name="TOTTENHAM HOTSPUR">
+<status id="0" name="NOT_STARTED" start="0"/>
+<score t1="0" t2="0" type="current"/>
+<red t1="0" t2="0"/>
+<yellow t1="0" t2="0"/>
+<corners t1="0" t2="0"/>
+<dangerousattacks t1="0" t2="0"/>
+<penalties t1="0" t2="0"/>
+<weatherconditions id="0" name="UNKNOWN"/>
+<pitchconditions id="0" name="UNKNOWN"/>
+<kickoffteam team="0"/>
+<throwins t1="0" t2="0"/>
+<goalkicks t1="0" t2="0"/>
+<freekicks t1="0" t2="0"/>
+<shotsofftarget t1="0" t2="0"/>
+<shotsontarget t1="0" t2="0"/>
+<shotsblocked t1="0" t2="0"/>
+<goalkeepersaves t1="0" t2="0"/>
+<offsides t1="0" t2="0"/>
+<injuries t1="0" t2="0"/>
+<possession t1="50" t2="50"/>
+<events/>
+<tournament id="1" name="Premier League"/>
+<category id="1" name="England"/>
+<sport id="1" name="Soccer"/>
+</match>

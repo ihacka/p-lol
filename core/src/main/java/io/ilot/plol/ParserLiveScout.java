@@ -1,35 +1,24 @@
 package io.ilot.plol;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.concurrent.Future;
 import java.util.function.Function;
 
 import javax.persistence.*;
 import javax.xml.stream.*;
 
-import io.ilot.plol.model.Event;
-import io.ilot.plol.model.Incident;
-import io.ilot.plol.model.IncidentType;
-import io.ilot.plol.model.ParticipantType;
+import io.ilot.plol.model.*;
 import io.ilot.plol.repos.EventRepository;
 import io.ilot.plol.repos.IncidentRepository;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.codehaus.stax2.XMLInputFactory2;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.stax2.XMLStreamWriter2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<dangerousattacks t1="24" t2="31"/>
+<events>
+<event id="1206783772" info="Dangerous attack [T2]" matchscore="2:0" mtime="58:42" posx="20" posy="97" side="away" stime="1511012810693" type="1029"/>
+</events>
+</match>

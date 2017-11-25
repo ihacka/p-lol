@@ -1,0 +1,17 @@
+
+<OddsSuggestions matchid="11830376">
+<Odds bookId="24" changenumber="0" description="Who wins the rest of the match?" guthMatchId="-1" manualActive="1" matchId="11830376" maxDev="0.0" pref="true" specialOddsValue="2:0" subtype="4" type="19" validDate="1511014808158">
+<OddsField description="Home" side="home">14.00</OddsField>
+<OddsField description="Draw" side="draw">1.03</OddsField>
+<OddsField description="Away" side="away">16.25</OddsField>
+</Odds>
+<Odds bookId="24" changenumber="0" description="Over / Under +2.5" guthMatchId="-1" manualActive="1" matchId="11830376" maxDev="0.0" pref="true" specialOddsValue="2.5" subtype="-1" type="4" validDate="1511014808158">
+<OddsField description="Over 2.5" side="betover">8.00</OddsField>
+<OddsField description="Under 2.5" side="betunder">1.04</OddsField>
+</Odds>
+<Odds bookId="24" changenumber="0" description="Next Goal" guthMatchId="-1" manualActive="1" matchId="11830376" maxDev="0.0" pref="true" specialOddsValue="2:0" subtype="13" type="19" validDate="1511014808158">
+<OddsField description="Home" side="home">13.00</OddsField>
+<OddsField description="None" side="draw">1.03</OddsField>
+<OddsField description="Away" side="away">15.25</OddsField>
+</Odds>
+</OddsSuggestions>

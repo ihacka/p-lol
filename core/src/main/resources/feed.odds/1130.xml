@@ -1,0 +1,6 @@
+
+<BetradarLiveOdds timestamp="1511012246706" status="cards" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="2p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="50" score="2:0" setscore1="2:0" setscore2="0:0" msgnr="629" cornershome="4" cornersaway="0" yellowcardshome="3" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Card id="21848436" type="yellow" team="away" time="50" player="H.Kane" canceled="false"/>
+</Match>
+</BetradarLiveOdds>

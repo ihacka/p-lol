@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<corners t1="7" t2="3"/>
+<events>
+<event extrainfo="0" id="1206839732" info="Corner kick [T2] -M.Sissoko" matchscore="2:0" mtime="82:49" player1="27014" posx="5" posy="90" side="away" stime="1511014256726" type="154"/>
+</events>
+</match>

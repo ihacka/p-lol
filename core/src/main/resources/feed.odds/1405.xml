@@ -1,0 +1,484 @@
+
+<BetradarLiveOdds timestamp="1511013278306" status="change" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="2p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="67" score="2:0" setscore1="2:0" setscore2="0:0" msgnr="801" cornershome="6" cornersaway="1" yellowcardshome="3" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Odds id="308142896" type="ft2w" subtype="36" specialoddsvalue="-2.25" freetext="Asian handicap first half" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308117590" type="to" specialoddsvalue="3.5" combination="0" active="1" changed="true" typeid="5" mostbalanced="0">
+<OddsField type="o" active="1">2.65</OddsField>
+<OddsField type="u" active="1">1.35</OddsField>
+</Odds>
+<Odds id="308140626" type="ft3w" subtype="4" specialoddsvalue="1:0" freetext="Who wins the rest of the match?" combination="0" active="0" changed="false" typeid="6" mostbalanced="0"/>
+<Odds id="308134170" type="ftnw" subtype="128" specialoddsvalue="1.5" freetext="1st Half - Total Corners" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308136696" type="ftnw" subtype="137" specialoddsvalue="0.5" freetext="1st Half - Total Corners awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117912" type="ftnw" subtype="165" specialoddsvalue="-1" freetext="Total Booking Points (aggregated)" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="0-30" active="0"/>
+<OddsField type="31-45" active="1">4.3</OddsField>
+<OddsField type="46-60" active="1">1.85</OddsField>
+<OddsField type="61-75" active="1">5.25</OddsField>
+<OddsField type="76+" active="1">7.0</OddsField>
+</Odds>
+<Odds id="308141208" type="ftnw" subtype="159" specialoddsvalue="3.5" freetext="Bookings Hometeam" combination="0" active="1" changed="false" typeid="8" mostbalanced="1">
+<OddsField type="under" active="1">1.8</OddsField>
+<OddsField type="over" active="1">1.8</OddsField>
+</Odds>
+<Odds id="308117552" type="ftnw" subtype="183" specialoddsvalue="2.5" freetext="Matchbet and Totals" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308140614" type="ftnw" subtype="147" specialoddsvalue="1:0" freetext="Next Goal scorer" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117904" type="ftnw" subtype="136" specialoddsvalue="2.5" freetext="1st Half - Total Corners hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308118050" type="ftnw" subtype="167" specialoddsvalue="2.5" freetext="1st Half - Total Bookings" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117946" type="ftnw" subtype="130" specialoddsvalue="-1" freetext="Corners hometeam" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="0-2" active="0"/>
+<OddsField type="3-4" active="0"/>
+<OddsField type="5-6" active="1">2.6</OddsField>
+<OddsField type="7+" active="1">1.4</OddsField>
+</Odds>
+<Odds id="308133022" type="ftnw" subtype="126" specialoddsvalue="7.5" freetext="Total Corners" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308118024" type="ftnw" subtype="177" specialoddsvalue="-1" freetext="1st Half - Total Booking Points (aggregated)" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308142862" type="ftnw" subtype="147" specialoddsvalue="2:0" freetext="Next Goal scorer" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="Cech, Petr" active="1">50.0</OddsField>
+<OddsField type="Ozil, Mesut" active="1">27.0</OddsField>
+<OddsField type="Monreal, Nacho" active="1">50.0</OddsField>
+<OddsField type="Ramsey, Aaron" active="1">24.0</OddsField>
+<OddsField type="Sanchez, Alexis" active="1">11.25</OddsField>
+<OddsField type="Lacazette, Alexandre" active="1">8.5</OddsField>
+<OddsField type="Koscielny, Laurent" active="1">50.0</OddsField>
+<OddsField type="Mustafi, Shkodran" active="1">50.0</OddsField>
+<OddsField type="Xhaka, Granit" active="1">48.0</OddsField>
+<OddsField type="Kolasinac, Sead" active="1">50.0</OddsField>
+<OddsField type="Bellerin, Hector" active="1">50.0</OddsField>
+<OddsField type="Mertesacker, Per" active="0"/>
+<OddsField type="Ospina, David" active="0"/>
+<OddsField type="Welbeck, Danny" active="0"/>
+<OddsField type="Wilshere, Jack" active="0"/>
+<OddsField type="Coquelin, Francis" active="0"/>
+<OddsField type="Maitland-Niles, Ainsley" active="0"/>
+<OddsField type="Iwobi, Alex" active="0"/>
+<OddsField type="player home 19" active="0"/>
+<OddsField type="player home 20" active="0"/>
+<OddsField type="player home 21" active="0"/>
+<OddsField type="player home 22" active="0"/>
+<OddsField type="player home 23" active="0"/>
+<OddsField type="Lloris, Hugo" active="1">50.0</OddsField>
+<OddsField type="Dembele, Mousa" active="0"/>
+<OddsField type="Vertonghen, Jan" active="1">50.0</OddsField>
+<OddsField type="Sissoko, Moussa" active="1">42.0</OddsField>
+<OddsField type="Trippier, Kieran" active="1">50.0</OddsField>
+<OddsField type="Davies, Ben" active="1">50.0</OddsField>
+<OddsField type="Eriksen, Christian" active="1">21.0</OddsField>
+<OddsField type="Kane, Harry" active="1">7.0</OddsField>
+<OddsField type="Dier, Eric" active="1">50.0</OddsField>
+<OddsField type="Alli, Dele" active="1">11.25</OddsField>
+<OddsField type="Sanchez, Davison" active="1">50.0</OddsField>
+<OddsField type="Llorente, Fernando" active="0"/>
+<OddsField type="Vorm, Michel" active="0"/>
+<OddsField type="Aurier, Serge" active="0"/>
+<OddsField type="Heung Min, Son" active="0"/>
+<OddsField type="Winks, Harry" active="1">50.0</OddsField>
+<OddsField type="Walker-Peters, Kyle" active="0"/>
+<OddsField type="Foyth, Juan" active="0"/>
+<OddsField type="player away 19" active="0"/>
+<OddsField type="player away 20" active="0"/>
+<OddsField type="player away 21" active="0"/>
+<OddsField type="player away 22" active="0"/>
+<OddsField type="player away 23" active="0"/>
+<OddsField type="none" active="1">2.65</OddsField>
+</Odds>
+<Odds id="308117974" type="ftnw" subtype="129" specialoddsvalue="-1" freetext="1st Half - Total Corners (aggregated)" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117554" type="ftnw" subtype="141" specialoddsvalue="-1" freetext="1st Half - Exact number of goals" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117560" type="to" specialoddsvalue="4.5" combination="0" active="0" changed="true" typeid="5" mostbalanced="0"/>
+<Odds id="307096854" type="ft3w" subtype="4" specialoddsvalue="0:0" freetext="Who wins the rest of the match?" combination="0" active="0" changed="false" typeid="6" mostbalanced="0"/>
+<Odds id="308138312" type="ftnw" subtype="167" specialoddsvalue="3.5" freetext="1st Half - Total Bookings" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117948" type="ft2w" subtype="123" specialoddsvalue="0.5" freetext="1st Half - Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308117882" type="ftnw" subtype="159" specialoddsvalue="2.5" freetext="Bookings Hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308118622" type="ft2w" subtype="34" specialoddsvalue="0.25" freetext="Asian Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308131568" type="ftnw" subtype="136" specialoddsvalue="1.5" freetext="1st Half - Total Corners hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308125408" type="to" specialoddsvalue="1.5" combination="0" active="0" changed="false" typeid="5" mostbalanced="0"/>
+<Odds id="308136318" type="ftnw" subtype="175" specialoddsvalue="5.5" freetext="1st Half - Total Booking Points" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308118006" type="ftnw" subtype="155" specialoddsvalue="-1" freetext="Total Bookings (excactly)" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="&lt;4" active="0"/>
+<OddsField type="4" active="1">4.4</OddsField>
+<OddsField type="5" active="1">3.25</OddsField>
+<OddsField type="6" active="1">3.7</OddsField>
+<OddsField type="7" active="1">6.0</OddsField>
+<OddsField type="8" active="1">12.0</OddsField>
+<OddsField type="9" active="1">28.0</OddsField>
+<OddsField type="10" active="1">35.0</OddsField>
+<OddsField type="11" active="1">35.0</OddsField>
+<OddsField type="12+" active="1">35.0</OddsField>
+</Odds>
+<Odds id="308124130" type="ftnw" subtype="128" specialoddsvalue="3.5" freetext="1st Half - Total Corners" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117556" type="ftnw" subtype="140" specialoddsvalue="-1" freetext="Exact number of goals" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="0" active="0"/>
+<OddsField type="1" active="0"/>
+<OddsField type="2" active="1">2.65</OddsField>
+<OddsField type="3" active="1">2.5</OddsField>
+<OddsField type="4" active="1">4.25</OddsField>
+<OddsField type="5" active="1">11.0</OddsField>
+<OddsField type="6+" active="1">30.0</OddsField>
+</Odds>
+<Odds id="308118022" type="ftnw" subtype="167" specialoddsvalue="0.5" freetext="1st Half - Total Bookings" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117972" type="ft2w" subtype="122" specialoddsvalue="-0.5" freetext="Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308117518" type="ftnw" subtype="29" specialoddsvalue="0:0" freetext="Correct score first half flex" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308118074" type="ft3w" subtype="149" specialoddsvalue="-1" freetext="Bookingbet" combination="0" active="1" changed="false" typeid="6" mostbalanced="1">
+<OddsField type="1" active="1">1.14</OddsField>
+<OddsField type="x" active="1">6.75</OddsField>
+<OddsField type="2" active="1">12.0</OddsField>
+</Odds>
+<Odds id="307096838" type="to" specialoddsvalue="2.5" combination="0" active="1" changed="true" typeid="5" mostbalanced="1">
+<OddsField type="o" active="1">1.35</OddsField>
+<OddsField type="u" active="1">2.65</OddsField>
+</Odds>
+<Odds id="308117874" type="ftnw" subtype="139" specialoddsvalue="-1" freetext="1st Half - Corners Odd/Even" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117980" type="ftnw" subtype="126" specialoddsvalue="12.5" freetext="Total Corners" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308142892" type="ft3w" subtype="4" specialoddsvalue="2:0" freetext="Who wins the rest of the match?" combination="0" active="1" changed="true" typeid="6" mostbalanced="1">
+<OddsField type="1" active="1">3.3</OddsField>
+<OddsField type="x" active="1">2.1</OddsField>
+<OddsField type="2" active="1">3.0</OddsField>
+</Odds>
+<Odds id="308128238" type="ftnw" subtype="128" specialoddsvalue="2.5" freetext="1st Half - Total Corners" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117604" type="ftnw" subtype="26" specialoddsvalue="-1" freetext="Correct score" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="0:0" active="0"/>
+<OddsField type="1:0" active="0"/>
+<OddsField type="2:0" active="1">2.65</OddsField>
+<OddsField type="3:0" active="1">5.0</OddsField>
+<OddsField type="0:1" active="0"/>
+<OddsField type="1:1" active="0"/>
+<OddsField type="2:1" active="1">4.8</OddsField>
+<OddsField type="3:1" active="1">8.5</OddsField>
+<OddsField type="0:2" active="0"/>
+<OddsField type="1:2" active="0"/>
+<OddsField type="2:2" active="1">15.5</OddsField>
+<OddsField type="3:2" active="1">29.0</OddsField>
+<OddsField type="0:3" active="0"/>
+<OddsField type="1:3" active="0"/>
+<OddsField type="2:3" active="1">76.0</OddsField>
+<OddsField type="3:3" active="1">76.0</OddsField>
+<OddsField type="other" active="1">8.25</OddsField>
+</Odds>
+<Odds id="308151774" type="ftnw" subtype="159" specialoddsvalue="4.5" freetext="Bookings Hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308118072" type="ftnw" subtype="167" specialoddsvalue="1.5" freetext="1st Half - Total Bookings" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308140620" type="ftnw" subtype="35" specialoddsvalue="1.75" freetext="Asian total first half" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308142864" type="ftnw" subtype="33" specialoddsvalue="4.0" freetext="Asian total" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117586" type="ftnw" subtype="27" specialoddsvalue="-1" freetext="Double chance (1X - 12 - X2)" combination="0" active="0" changed="true" typeid="8" mostbalanced="1"/>
+<Odds id="308117866" type="ftnw" subtype="127" specialoddsvalue="-1" freetext="Total Corners (aggregated)" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="&lt;9" active="1">4.35</OddsField>
+<OddsField type="9-11" active="1">1.5</OddsField>
+<OddsField type="12+" active="1">4.6</OddsField>
+</Odds>
+<Odds id="308140618" type="ftnw" subtype="29" specialoddsvalue="1:0" freetext="Correct score first half flex" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117988" type="ftnw" subtype="126" specialoddsvalue="11.5" freetext="Total Corners" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308140612" type="ft2w" subtype="34" specialoddsvalue="-1.25" freetext="Asian Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308117944" type="ftnw" subtype="153" specialoddsvalue="4.5" freetext="Total Bookings" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="307096876" type="ft2w" subtype="16" specialoddsvalue="-1" freetext="Draw No Bet" combination="0" active="0" changed="false" typeid="7" mostbalanced="1"/>
+<Odds id="308117878" type="ftnw" subtype="138" specialoddsvalue="-1" freetext="Corners Odd/Even" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="odd" active="1">1.8</OddsField>
+<OddsField type="even" active="1">1.8</OddsField>
+</Odds>
+<Odds id="308127586" type="ftnw" subtype="33" specialoddsvalue="2.25" freetext="Asian total" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308137548" type="ft2w" subtype="123" specialoddsvalue="-5.5" freetext="1st Half - Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308117520" type="ft2w" subtype="36" specialoddsvalue="-0.25" freetext="Asian handicap first half" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308142870" type="ftnw" subtype="29" specialoddsvalue="2:0" freetext="Correct score first half flex" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117998" type="ftnw" subtype="126" specialoddsvalue="10.5" freetext="Total Corners" combination="0" active="1" changed="true" typeid="8" mostbalanced="0">
+<OddsField type="under" active="1">1.4</OddsField>
+<OddsField type="over" active="1">2.5</OddsField>
+</Odds>
+<Odds id="308117576" type="ftnw" subtype="33" specialoddsvalue="3.25" freetext="Asian total" combination="0" active="1" changed="true" typeid="8" mostbalanced="0">
+<OddsField type="under" active="1">1.5</OddsField>
+<OddsField type="over" active="1">2.25</OddsField>
+</Odds>
+<Odds id="308118062" type="ftnw" subtype="157" specialoddsvalue="-1" freetext="Sending off?" combination="0" active="1" changed="false" typeid="8" mostbalanced="1">
+<OddsField type="yes" active="1">5.25</OddsField>
+<OddsField type="no" active="1">1.09</OddsField>
+</Odds>
+<Odds id="308118004" type="ftnw" subtype="175" specialoddsvalue="15.5" freetext="1st Half - Total Booking Points" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308142866" type="ftnw" subtype="35" specialoddsvalue="2.75" freetext="Asian total first half" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308142856" type="ft3w" subtype="13" specialoddsvalue="2:0" freetext="Next goal" combination="0" active="1" changed="true" typeid="6" mostbalanced="1">
+<OddsField type="1" active="1">2.75</OddsField>
+<OddsField type="x" active="1">2.65</OddsField>
+<OddsField type="2" active="1">2.55</OddsField>
+</Odds>
+<Odds id="308117624" type="ftnw" subtype="35" specialoddsvalue="1.0" freetext="Asian total first half" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117918" type="ftnw" subtype="153" specialoddsvalue="5.5" freetext="Total Bookings" combination="0" active="1" changed="false" typeid="8" mostbalanced="1">
+<OddsField type="under" active="1">1.85</OddsField>
+<OddsField type="over" active="1">1.75</OddsField>
+</Odds>
+<Odds id="308117880" type="ftnw" subtype="161" specialoddsvalue="2.5" freetext="Bookings Awayteam" combination="0" active="1" changed="false" typeid="8" mostbalanced="1">
+<OddsField type="under" active="1">1.3</OddsField>
+<OddsField type="over" active="1">3.0</OddsField>
+</Odds>
+<Odds id="308138314" type="ftnw" subtype="33" specialoddsvalue="1.75" freetext="Asian total" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308137780" type="ftnw" subtype="163" specialoddsvalue="35.5" freetext="Total Booking Points" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308137552" type="ft2w" subtype="123" specialoddsvalue="-4.5" freetext="1st Half - Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="1"/>
+<Odds id="308135902" type="ftnw" subtype="33" specialoddsvalue="2.0" freetext="Asian total" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308143432" type="ft2w" subtype="34" specialoddsvalue="-1.75" freetext="Asian Handicap" combination="0" active="1" changed="false" typeid="7" mostbalanced="0">
+<OddsField type="1" active="1">1.5</OddsField>
+<OddsField type="2" active="1">2.3</OddsField>
+</Odds>
+<Odds id="308142882" type="to" specialoddsvalue="5.5" combination="0" active="0" changed="false" typeid="5" mostbalanced="0"/>
+<Odds id="308117566" type="ftnw" subtype="33" specialoddsvalue="2.75" freetext="Asian total" combination="0" active="1" changed="true" typeid="8" mostbalanced="0">
+<OddsField type="under" active="1">2.25</OddsField>
+<OddsField type="over" active="1">1.5</OddsField>
+</Odds>
+<Odds id="308142868" type="ft2w" subtype="36" specialoddsvalue="-2.0" freetext="Asian handicap first half" combination="0" active="0" changed="false" typeid="7" mostbalanced="1"/>
+<Odds id="308127152" type="ftnw" subtype="35" specialoddsvalue="0.75" freetext="Asian total first half" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308140510" type="ft3w" subtype="13" specialoddsvalue="1:0" freetext="Next goal" combination="0" active="0" changed="false" typeid="6" mostbalanced="0"/>
+<Odds id="308141206" type="ftnw" subtype="167" specialoddsvalue="4.5" freetext="1st Half - Total Bookings" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117594" type="ftnw" subtype="28" specialoddsvalue="-1" freetext="Goals home team" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="0" active="0"/>
+<OddsField type="1" active="0"/>
+<OddsField type="2" active="1">1.6</OddsField>
+<OddsField type="3+" active="1">2.1</OddsField>
+</Odds>
+<Odds id="308145972" type="ftnw" subtype="161" specialoddsvalue="1.5" freetext="Bookings Awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308118044" type="ftnw" subtype="169" specialoddsvalue="-1" freetext="1st Half - Total Bookings (exactly)" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117522" type="ftnw" subtype="33" specialoddsvalue="3.0" freetext="Asian total" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="under" active="1">1.8</OddsField>
+<OddsField type="over" active="1">1.8</OddsField>
+</Odds>
+<Odds id="308142872" type="ft2w" subtype="34" specialoddsvalue="-2.25" freetext="Asian Handicap" combination="0" active="1" changed="true" typeid="7" mostbalanced="0">
+<OddsField type="1" active="1">2.5</OddsField>
+<OddsField type="2" active="1">1.4</OddsField>
+</Odds>
+<Odds id="308140608" type="ft2w" subtype="36" specialoddsvalue="-1.0" freetext="Asian handicap first half" combination="0" active="0" changed="false" typeid="7" mostbalanced="1"/>
+<Odds id="307096826" type="ft3w" subtype="13" specialoddsvalue="0:0" freetext="Next goal" combination="0" active="0" changed="false" typeid="6" mostbalanced="0"/>
+<Odds id="308127150" type="ftnw" subtype="153" specialoddsvalue="3.5" freetext="Total Bookings" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308140622" type="ft2w" subtype="36" specialoddsvalue="-1.25" freetext="Asian handicap first half" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308142876" type="ftnw" subtype="33" specialoddsvalue="4.25" freetext="Asian total" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308140628" type="ft2w" subtype="34" specialoddsvalue="-1.0" freetext="Asian Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308137560" type="ft2w" subtype="122" specialoddsvalue="-5.5" freetext="Corner Handicap" combination="0" active="1" changed="true" typeid="7" mostbalanced="0">
+<OddsField type="1" active="1">3.25</OddsField>
+<OddsField type="2" active="1">1.25</OddsField>
+</Odds>
+<Odds id="308140634" type="ftnw" subtype="104" specialoddsvalue="1:0" freetext="Correct score flex" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308140632" type="ft3w" subtype="20" specialoddsvalue="1:0" freetext="Halftime - Who wins the rest?" combination="0" active="0" changed="false" typeid="6" mostbalanced="1"/>
+<Odds id="308117572" type="ftnw" subtype="30" specialoddsvalue="-1" freetext="Goal/No goal" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="goal" active="1">2.0</OddsField>
+<OddsField type="nogoal" active="1">1.65</OddsField>
+</Odds>
+<Odds id="308118028" type="ft2w" subtype="123" specialoddsvalue="-1.5" freetext="1st Half - Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308118030" type="ftnw" subtype="163" specialoddsvalue="55.5" freetext="Total Booking Points" combination="0" active="1" changed="false" typeid="8" mostbalanced="1">
+<OddsField type="under" active="1">1.85</OddsField>
+<OddsField type="over" active="1">1.75</OddsField>
+</Odds>
+<Odds id="308140630" type="ft2w" subtype="34" specialoddsvalue="-1.5" freetext="Asian Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308142888" type="ftnw" subtype="33" specialoddsvalue="3.75" freetext="Asian total" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117558" type="ftnw" subtype="31" specialoddsvalue="-1" freetext="Odd/Even" combination="0" active="1" changed="false" typeid="8" mostbalanced="1">
+<OddsField type="odd" active="1">2.0</OddsField>
+<OddsField type="even" active="1">1.65</OddsField>
+</Odds>
+<Odds id="308137570" type="ft2w" subtype="122" specialoddsvalue="-6.5" freetext="Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308142884" type="ftnw" subtype="104" specialoddsvalue="2:0" freetext="Correct score flex" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="2:0" active="1">2.65</OddsField>
+<OddsField type="3:0" active="1">5.0</OddsField>
+<OddsField type="4:0" active="1">18.25</OddsField>
+<OddsField type="5:0" active="1">76.0</OddsField>
+<OddsField type="6:0" active="1">76.0</OddsField>
+<OddsField type="7:0" active="1">76.0</OddsField>
+<OddsField type="8:0" active="1">76.0</OddsField>
+<OddsField type="2:1" active="1">4.8</OddsField>
+<OddsField type="3:1" active="1">8.5</OddsField>
+<OddsField type="4:1" active="1">31.0</OddsField>
+<OddsField type="5:1" active="1">76.0</OddsField>
+<OddsField type="6:1" active="1">76.0</OddsField>
+<OddsField type="7:1" active="1">76.0</OddsField>
+<OddsField type="2:2" active="1">15.5</OddsField>
+<OddsField type="3:2" active="1">29.0</OddsField>
+<OddsField type="4:2" active="1">76.0</OddsField>
+<OddsField type="5:2" active="1">76.0</OddsField>
+<OddsField type="6:2" active="1">76.0</OddsField>
+<OddsField type="2:3" active="1">76.0</OddsField>
+<OddsField type="3:3" active="1">76.0</OddsField>
+<OddsField type="4:3" active="1">76.0</OddsField>
+<OddsField type="5:3" active="1">76.0</OddsField>
+<OddsField type="2:4" active="1">76.0</OddsField>
+<OddsField type="3:4" active="1">76.0</OddsField>
+<OddsField type="4:4" active="1">76.0</OddsField>
+<OddsField type="2:5" active="1">76.0</OddsField>
+<OddsField type="3:5" active="1">76.0</OddsField>
+<OddsField type="2:6" active="1">76.0</OddsField>
+</Odds>
+<Odds id="308117580" type="ft3w" subtype="20" specialoddsvalue="0:0" freetext="Halftime - Who wins the rest?" combination="0" active="0" changed="false" typeid="6" mostbalanced="1"/>
+<Odds id="308124954" type="ftnw" subtype="173" specialoddsvalue="0.5" freetext="1st Half - Bookings Awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308118052" type="ftnw" subtype="135" specialoddsvalue="-1" freetext="1st Half - Corners awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117546" type="ftnw" subtype="35" specialoddsvalue="1.25" freetext="Asian total first half" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="307096850" type="ft2w" subtype="2" specialoddsvalue="-1" freetext="Which team has kick off?" combination="0" active="0" changed="false" typeid="7" mostbalanced="1"/>
+<Odds id="308138316" type="ftnw" subtype="133" specialoddsvalue="2.5" freetext="Total Corners awayteam" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="under" active="1">1.95</OddsField>
+<OddsField type="over" active="1">1.65</OddsField>
+</Odds>
+<Odds id="308118040" type="ft2w" subtype="123" specialoddsvalue="-0.5" freetext="1st Half - Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308121226" type="ftnw" subtype="146" specialoddsvalue="-1" freetext="Anytime Goal scorer" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="Cech, Petr" active="1">50.0</OddsField>
+<OddsField type="Ozil, Mesut" active="1">16.5</OddsField>
+<OddsField type="Monreal, Nacho" active="1">50.0</OddsField>
+<OddsField type="Ramsey, Aaron" active="1">14.5</OddsField>
+<OddsField type="Sanchez, Alexis" active="0"/>
+<OddsField type="Lacazette, Alexandre" active="1">5.5</OddsField>
+<OddsField type="Koscielny, Laurent" active="1">50.0</OddsField>
+<OddsField type="Mustafi, Shkodran" active="0"/>
+<OddsField type="Xhaka, Granit" active="1">29.0</OddsField>
+<OddsField type="Kolasinac, Sead" active="1">38.0</OddsField>
+<OddsField type="Bellerin, Hector" active="1">50.0</OddsField>
+<OddsField type="Mertesacker, Per" active="0"/>
+<OddsField type="Ospina, David" active="0"/>
+<OddsField type="Welbeck, Danny" active="0"/>
+<OddsField type="Wilshere, Jack" active="0"/>
+<OddsField type="Coquelin, Francis" active="0"/>
+<OddsField type="Maitland-Niles, Ainsley" active="0"/>
+<OddsField type="Iwobi, Alex" active="0"/>
+<OddsField type="player home 19" active="0"/>
+<OddsField type="player home 20" active="0"/>
+<OddsField type="player home 21" active="0"/>
+<OddsField type="player home 22" active="0"/>
+<OddsField type="player home 23" active="0"/>
+<OddsField type="Lloris, Hugo" active="1">50.0</OddsField>
+<OddsField type="Dembele, Mousa" active="0"/>
+<OddsField type="Vertonghen, Jan" active="1">37.0</OddsField>
+<OddsField type="Sissoko, Moussa" active="1">25.0</OddsField>
+<OddsField type="Trippier, Kieran" active="1">47.0</OddsField>
+<OddsField type="Davies, Ben" active="1">50.0</OddsField>
+<OddsField type="Eriksen, Christian" active="1">13.0</OddsField>
+<OddsField type="Kane, Harry" active="1">4.6</OddsField>
+<OddsField type="Dier, Eric" active="1">43.0</OddsField>
+<OddsField type="Alli, Dele" active="1">7.0</OddsField>
+<OddsField type="Sanchez, Davison" active="1">40.0</OddsField>
+<OddsField type="Llorente, Fernando" active="0"/>
+<OddsField type="Vorm, Michel" active="0"/>
+<OddsField type="Aurier, Serge" active="0"/>
+<OddsField type="Heung Min, Son" active="0"/>
+<OddsField type="Winks, Harry" active="1">32.0</OddsField>
+<OddsField type="Walker-Peters, Kyle" active="0"/>
+<OddsField type="Foyth, Juan" active="0"/>
+<OddsField type="player away 19" active="0"/>
+<OddsField type="player away 20" active="0"/>
+<OddsField type="player away 21" active="0"/>
+<OddsField type="player away 22" active="0"/>
+<OddsField type="player away 23" active="0"/>
+<OddsField type="none" active="0"/>
+</Odds>
+<Odds id="308117632" type="ft2w" subtype="34" specialoddsvalue="0.0" freetext="Asian Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308117550" type="ft2w" subtype="34" specialoddsvalue="-0.5" freetext="Asian Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308132012" type="ftnw" subtype="132" specialoddsvalue="4.5" freetext="Total Corners hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117548" type="ft2w" subtype="34" specialoddsvalue="-0.25" freetext="Asian Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308117958" type="ft3w" subtype="120" specialoddsvalue="-1" freetext="Cornerbet" combination="0" active="0" changed="true" typeid="6" mostbalanced="1"/>
+<Odds id="308118054" type="ftnw" subtype="173" specialoddsvalue="1.5" freetext="1st Half - Bookings Awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117964" type="ftnw" subtype="132" specialoddsvalue="5.5" freetext="Total Corners hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308118064" type="ftnw" subtype="134" specialoddsvalue="-1" freetext="1st Half - Corners hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308140648" type="ftnw" subtype="35" specialoddsvalue="2.0" freetext="Asian total first half" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308134726" type="ftnw" subtype="133" specialoddsvalue="3.5" freetext="Total Corners awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117978" type="ftnw" subtype="153" specialoddsvalue="6.5" freetext="Total Bookings" combination="0" active="1" changed="false" typeid="8" mostbalanced="0">
+<OddsField type="under" active="1">1.3</OddsField>
+<OddsField type="over" active="1">3.05</OddsField>
+</Odds>
+<Odds id="308117584" type="ft3w" subtype="22" specialoddsvalue="-1" freetext="Halftime - 3way" combination="0" active="0" changed="false" typeid="6" mostbalanced="1"/>
+<Odds id="308136130" type="ft2w" subtype="123" specialoddsvalue="-3.5" freetext="1st Half - Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308142878" type="ft2w" subtype="34" specialoddsvalue="-2.0" freetext="Asian Handicap" combination="0" active="1" changed="false" typeid="7" mostbalanced="1">
+<OddsField type="1" active="1">1.9</OddsField>
+<OddsField type="2" active="1">1.75</OddsField>
+</Odds>
+<Odds id="308142910" type="ft3w" subtype="20" specialoddsvalue="2:0" freetext="Halftime - Who wins the rest?" combination="0" active="0" changed="false" typeid="6" mostbalanced="1"/>
+<Odds id="308141218" type="ftnw" subtype="175" specialoddsvalue="25.5" freetext="1st Half - Total Booking Points" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117564" type="ftnw" subtype="145" specialoddsvalue="-1" freetext="1st Half - Goals awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308126912" type="ftnw" subtype="163" specialoddsvalue="45.5" freetext="Total Booking Points" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117540" type="ftnw" subtype="32" specialoddsvalue="-1" freetext="Goals away team" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="0" active="1">1.65</OddsField>
+<OddsField type="1" active="1">2.7</OddsField>
+<OddsField type="2" active="1">8.75</OddsField>
+<OddsField type="3+" active="1">25.0</OddsField>
+</Odds>
+<Odds id="308136106" type="ftnw" subtype="132" specialoddsvalue="6.5" freetext="Total Corners hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308142900" type="ftnw" subtype="35" specialoddsvalue="3.0" freetext="Asian total first half" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117914" type="ft3w" subtype="121" specialoddsvalue="-1" freetext="1st Half - Cornerbet" combination="0" active="0" changed="false" typeid="6" mostbalanced="1"/>
+<Odds id="308125672" type="ftnw" subtype="133" specialoddsvalue="4.5" freetext="Total Corners awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308135606" type="ft2w" subtype="123" specialoddsvalue="-2.5" freetext="1st Half - Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308152672" type="ftnw" subtype="153" specialoddsvalue="7.5" freetext="Total Bookings" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308142880" type="ft2w" subtype="34" specialoddsvalue="-2.5" freetext="Asian Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308117868" type="ft2w" subtype="122" specialoddsvalue="-1.5" freetext="Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308117598" type="ft2w" subtype="21" specialoddsvalue="1.5" freetext="Halftime - Total" combination="0" active="0" changed="false" typeid="7" mostbalanced="1"/>
+<Odds id="308140638" type="ftnw" subtype="142" specialoddsvalue="2.5" freetext="Total hometeam" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="under" active="1">1.6</OddsField>
+<OddsField type="over" active="1">2.1</OddsField>
+</Odds>
+<Odds id="308140346" type="ftnw" subtype="143" specialoddsvalue="0.5" freetext="Total awayteam" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="under" active="1">1.65</OddsField>
+<OddsField type="over" active="1">2.0</OddsField>
+</Odds>
+<Odds id="308117956" type="ftnw" subtype="118" specialoddsvalue="0:0" freetext="When will next goal be scored" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117966" type="ft2w" subtype="122" specialoddsvalue="0.5" freetext="Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308140008" type="ftnw" subtype="132" specialoddsvalue="7.5" freetext="Total Corners hometeam" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="under" active="1">1.35</OddsField>
+<OddsField type="over" active="1">2.65</OddsField>
+</Odds>
+<Odds id="308117900" type="ftnw" subtype="128" specialoddsvalue="5.5" freetext="1st Half - Total Corners" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117610" type="hc" specialoddsvalue="1:0" combination="0" active="0" changed="false" typeid="4" mostbalanced="0"/>
+<Odds id="308117574" type="ft3w" subtype="107" specialoddsvalue="0:0" freetext="Halftime - Next goal" combination="0" active="0" changed="false" typeid="6" mostbalanced="1"/>
+<Odds id="308117936" type="ftnw" subtype="133" specialoddsvalue="5.5" freetext="Total Corners awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117568" type="ftnw" subtype="144" specialoddsvalue="-1" freetext="1st Half - Goals hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308117930" type="ftnw" subtype="171" specialoddsvalue="0.5" freetext="1st Half - Bookings Hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308135600" type="ft2w" subtype="122" specialoddsvalue="-2.5" freetext="Corner Handicap" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308117582" type="ftnw" subtype="142" specialoddsvalue="1.5" freetext="Total hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308140624" type="ftnw" subtype="118" specialoddsvalue="1:0" freetext="When will next goal be scored" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117588" type="ft2w" subtype="36" specialoddsvalue="0.0" freetext="Asian handicap first half" combination="0" active="0" changed="false" typeid="7" mostbalanced="1"/>
+<Odds id="308137538" type="ftnw" subtype="132" specialoddsvalue="8.5" freetext="Total Corners hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117888" type="ftnw" subtype="128" specialoddsvalue="4.5" freetext="1st Half - Total Corners" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="307096866" type="3w" combination="0" active="0" changed="true" typeid="2" mostbalanced="1"/>
+<Odds id="308117562" type="ft2w" subtype="21" specialoddsvalue="0.5" freetext="Halftime - Total" combination="0" active="0" changed="false" typeid="7" mostbalanced="1"/>
+<Odds id="308137578" type="ftnw" subtype="136" specialoddsvalue="5.5" freetext="1st Half - Total Corners hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308142874" type="ft2w" subtype="21" specialoddsvalue="3.5" freetext="Halftime - Total" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+<Odds id="308136092" type="ft2w" subtype="122" specialoddsvalue="-3.5" freetext="Corner Handicap" combination="0" active="1" changed="false" typeid="7" mostbalanced="0">
+<OddsField type="1" active="1">1.35</OddsField>
+<OddsField type="2" active="1">2.65</OddsField>
+</Odds>
+<Odds id="308126446" type="ftnw" subtype="126" specialoddsvalue="8.5" freetext="Total Corners" combination="0" active="0" changed="true" typeid="8" mostbalanced="0"/>
+<Odds id="308152670" type="ftnw" subtype="163" specialoddsvalue="65.5" freetext="Total Booking Points" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308142886" type="ftnw" subtype="118" specialoddsvalue="2:0" freetext="When will next goal be scored" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="min 01-15" active="0"/>
+<OddsField type="min 16-30" active="0"/>
+<OddsField type="min 31-45" active="0"/>
+<OddsField type="min 46-60" active="0"/>
+<OddsField type="min 61-75" active="1">3.05</OddsField>
+<OddsField type="min 76-90" active="1">2.35</OddsField>
+<OddsField type="no goal" active="1">2.65</OddsField>
+</Odds>
+<Odds id="308117896" type="ftnw" subtype="137" specialoddsvalue="2.5" freetext="1st Half - Total Corners awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308137778" type="ftnw" subtype="159" specialoddsvalue="1.5" freetext="Bookings Hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308142908" type="ft3w" subtype="107" specialoddsvalue="2:0" freetext="Halftime - Next goal" combination="0" active="0" changed="false" typeid="6" mostbalanced="1"/>
+<Odds id="308138652" type="ftnw" subtype="136" specialoddsvalue="4.5" freetext="1st Half - Total Corners hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308141214" type="ftnw" subtype="171" specialoddsvalue="2.5" freetext="1st Half - Bookings Hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308137028" type="ft2w" subtype="122" specialoddsvalue="-4.5" freetext="Corner Handicap" combination="0" active="1" changed="false" typeid="7" mostbalanced="1">
+<OddsField type="1" active="1">1.95</OddsField>
+<OddsField type="2" active="1">1.7</OddsField>
+</Odds>
+<Odds id="308140636" type="ft2w" subtype="21" specialoddsvalue="2.5" freetext="Halftime - Total" combination="0" active="0" changed="false" typeid="7" mostbalanced="1"/>
+<Odds id="308142894" type="ftnw" subtype="142" specialoddsvalue="3.5" freetext="Total hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308123922" type="ftnw" subtype="126" specialoddsvalue="9.5" freetext="Total Corners" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="under" active="1">2.1</OddsField>
+<OddsField type="over" active="1">1.6</OddsField>
+</Odds>
+<Odds id="308117536" type="ftnw" subtype="143" specialoddsvalue="1.5" freetext="Total awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117934" type="ftnw" subtype="131" specialoddsvalue="-1" freetext="Corners awayteam" combination="0" active="1" changed="true" typeid="8" mostbalanced="1">
+<OddsField type="0-2" active="1">2.0</OddsField>
+<OddsField type="3-4" active="1">2.15</OddsField>
+<OddsField type="5-6" active="1">7.75</OddsField>
+<OddsField type="7+" active="1">25.0</OddsField>
+</Odds>
+<Odds id="308142904" type="hc" specialoddsvalue="0:4" combination="0" active="0" changed="true" typeid="4" mostbalanced="0"/>
+<Odds id="308117622" type="hc" specialoddsvalue="0:2" combination="0" active="0" changed="false" typeid="4" mostbalanced="0"/>
+<Odds id="308127860" type="ftnw" subtype="137" specialoddsvalue="1.5" freetext="1st Half - Total Corners awayteam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308140644" type="hc" specialoddsvalue="0:3" combination="0" active="1" changed="true" typeid="4" mostbalanced="0">
+<OddsField type="1" active="1">12.0</OddsField>
+<OddsField type="x" active="1">4.0</OddsField>
+<OddsField type="2" active="1">1.3</OddsField>
+</Odds>
+<Odds id="308117910" type="ftnw" subtype="128" specialoddsvalue="6.5" freetext="1st Half - Total Corners" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117620" type="hc" specialoddsvalue="0:1" combination="0" active="1" changed="true" typeid="4" mostbalanced="1">
+<OddsField type="1" active="1">1.35</OddsField>
+<OddsField type="x" active="1">3.8</OddsField>
+<OddsField type="2" active="1">10.5</OddsField>
+</Odds>
+<Odds id="308140646" type="ft3w" subtype="107" specialoddsvalue="1:0" freetext="Halftime - Next goal" combination="0" active="0" changed="false" typeid="6" mostbalanced="1"/>
+<Odds id="308117602" type="ftnw" subtype="104" specialoddsvalue="0:0" freetext="Correct score flex" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308117542" type="ftnw" subtype="119" specialoddsvalue="-1" freetext="Highest Scoring Half" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308138318" type="ftnw" subtype="171" specialoddsvalue="1.5" freetext="1st Half - Bookings Hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+<Odds id="308121224" type="ftnw" subtype="147" specialoddsvalue="0:0" freetext="Next Goal scorer" combination="0" active="0" changed="false" typeid="8" mostbalanced="0"/>
+<Odds id="308136086" type="ftnw" subtype="136" specialoddsvalue="3.5" freetext="1st Half - Total Corners hometeam" combination="0" active="0" changed="false" typeid="8" mostbalanced="1"/>
+</Match>
+</BetradarLiveOdds>

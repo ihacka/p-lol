@@ -1,0 +1,34 @@
+
+<BetradarLiveOdds timestamp="1510976586229" status="meta" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="not_started" active="1">
+<MatchInfo>
+<DateOfMatch>1511008200000</DateOfMatch>
+<Sport id="1">Soccer</Sport>
+<Category id="1">England</Category>
+<Tournament id="1">Premier League</Tournament>
+<HomeTeam id="4871" uniqueid="42">ARSENAL FC</HomeTeam>
+<AwayTeam id="5187" uniqueid="33">TOTTENHAM HOTSPUR</AwayTeam>
+<TvChannels>
+<TvChannel>Match Futbol 1</TvChannel>
+<TvChannel>Spiler TV</TvChannel>
+<TvChannel>Sport TV3</TvChannel>
+<TvChannel>M. F??TBOL HD</TvChannel>
+<TvChannel>SportKlub 1 HD SRB</TvChannel>
+<TvChannel>Sky Sports Main Event</TvChannel>
+<TvChannel>M. F??TBOL</TvChannel>
+<TvChannel>SKY Sport 3 IT HD</TvChannel>
+<TvChannel>Viasat Sport Premium HD</TvChannel>
+<TvChannel>CANAL+ SPORT 2 HD PL</TvChannel>
+<TvChannel>Sky Sports Premier League</TvChannel>
+<TvChannel>TV3+</TvChannel>
+<TvChannel>TK Futbol 1 UA</TvChannel>
+<TvChannel>Viasat Sport Baltic</TvChannel>
+<TvChannel>S SPORT HD</TvChannel>
+</TvChannels>
+<ExtraInfo>
+<Info type="PeriodLength">45</Info>
+<Info type="OvertimeLength">15</Info>
+</ExtraInfo>
+</MatchInfo>
+</Match>
+</BetradarLiveOdds>

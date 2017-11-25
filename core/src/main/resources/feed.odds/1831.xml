@@ -1,0 +1,9 @@
+
+<BetradarLiveOdds timestamp="1511014981030" status="clearbet" time="1" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="ended" active="1" betstatus="stopped" earlybetstatus="stopped" clearedscore="2:0" msgnr="1056" cornershome="7" cornersaway="4" yellowcardshome="4" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Odds id="308117550" type="ft2w" subtype="34" specialoddsvalue="-0.5" freetext="Asian Handicap" combination="0" active="1" typeid="7">
+<OddsField type="1" outcome="1" active="1"/>
+<OddsField type="2" outcome="0" active="1"/>
+</Odds>
+</Match>
+</BetradarLiveOdds>

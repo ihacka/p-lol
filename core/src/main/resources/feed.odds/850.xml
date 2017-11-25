@@ -1,0 +1,54 @@
+
+<BetradarLiveOdds timestamp="1511010829722" status="clearbet" time="3" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="1p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="44" clearedscore="2:0" msgnr="490" cornershome="4" cornersaway="0" yellowcardshome="2" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Odds id="308140614" type="ftnw" subtype="147" specialoddsvalue="1:0" freetext="Next Goal scorer" combination="0" active="1" typeid="8">
+<OddsField type="Cech, Petr" outcome="0" active="1"/>
+<OddsField type="Ozil, Mesut" outcome="0" active="1"/>
+<OddsField type="Monreal, Nacho" outcome="0" active="1"/>
+<OddsField type="Ramsey, Aaron" outcome="0" active="1"/>
+<OddsField type="Sanchez, Alexis" outcome="1" active="1"/>
+<OddsField type="Lacazette, Alexandre" outcome="0" active="1"/>
+<OddsField type="Koscielny, Laurent" outcome="0" active="1"/>
+<OddsField type="Mustafi, Shkodran" outcome="0" active="1"/>
+<OddsField type="Xhaka, Granit" outcome="0" active="1"/>
+<OddsField type="Kolasinac, Sead" outcome="0" active="1"/>
+<OddsField type="Bellerin, Hector" outcome="0" active="1"/>
+<OddsField type="Mertesacker, Per" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Ospina, David" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Welbeck, Danny" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Wilshere, Jack" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Coquelin, Francis" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Maitland-Niles, Ainsley" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Iwobi, Alex" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="player home 19" outcome="0" active="1"/>
+<OddsField type="player home 20" outcome="0" active="1"/>
+<OddsField type="player home 21" outcome="0" active="1"/>
+<OddsField type="player home 22" outcome="0" active="1"/>
+<OddsField type="player home 23" outcome="0" active="1"/>
+<OddsField type="Lloris, Hugo" outcome="0" active="1"/>
+<OddsField type="Dembele, Mousa" outcome="0" active="1"/>
+<OddsField type="Vertonghen, Jan" outcome="0" active="1"/>
+<OddsField type="Sissoko, Moussa" outcome="0" active="1"/>
+<OddsField type="Trippier, Kieran" outcome="0" active="1"/>
+<OddsField type="Davies, Ben" outcome="0" active="1"/>
+<OddsField type="Eriksen, Christian" outcome="0" active="1"/>
+<OddsField type="Kane, Harry" outcome="0" active="1"/>
+<OddsField type="Dier, Eric" outcome="0" active="1"/>
+<OddsField type="Alli, Dele" outcome="0" active="1"/>
+<OddsField type="Sanchez, Davison" outcome="0" active="1"/>
+<OddsField type="Llorente, Fernando" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Vorm, Michel" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Aurier, Serge" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Heung Min, Son" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Winks, Harry" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Walker-Peters, Kyle" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="Foyth, Juan" outcome="0" active="1" voidfactor="1"/>
+<OddsField type="player away 19" outcome="0" active="1"/>
+<OddsField type="player away 20" outcome="0" active="1"/>
+<OddsField type="player away 21" outcome="0" active="1"/>
+<OddsField type="player away 22" outcome="0" active="1"/>
+<OddsField type="player away 23" outcome="0" active="1"/>
+<OddsField type="none" outcome="0" active="1"/>
+</Odds>
+</Match>
+</BetradarLiveOdds>

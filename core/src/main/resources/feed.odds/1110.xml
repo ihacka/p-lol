@@ -1,0 +1,6 @@
+
+<BetradarLiveOdds timestamp="1511012119811" status="cards" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="2p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="48" score="2:0" setscore1="2:0" setscore2="0:0" msgnr="621" cornershome="4" cornersaway="0" yellowcardshome="3" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Card id="21848376" type="yellow" team="home" time="48" player="S.Mustafi" canceled="false"/>
+</Match>
+</BetradarLiveOdds>

@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<offsides t1="4" t2="1"/>
+<events>
+<event id="1206649212" info="Offside [T1] -M.Ozil. Freekick awarded to [T2]" matchscore="0:0" mtime="26:57" player1="16176" posx="83" posy="21" side="home" stime="1511009852174" type="153"/>
+</events>
+</match>
