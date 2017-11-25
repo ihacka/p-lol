@@ -2,10 +2,7 @@ package io.ilot.plol;
 
 
 import io.ilot.plol.controller.WebSocketsController.WebSocketTopic;
-import io.ilot.plol.model.Event;
-import io.ilot.plol.model.Incident;
-import io.ilot.plol.model.IncidentType;
-import io.ilot.plol.model.ParticipantType;
+import io.ilot.plol.model.*;
 import io.ilot.plol.repos.EventRepository;
 import io.ilot.plol.repos.IncidentRepository;
 import lombok.Data;
