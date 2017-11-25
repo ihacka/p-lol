@@ -1,0 +1,8 @@
+
+<match betstatus="BETSTOP" connectionstatus="1" dc="1" feedtype="deltaupdate" matchid="11830376">
+<score t1="1" t2="0" type="current"/>
+<shotsontarget t1="1" t2="2"/>
+<events>
+<event extrainfo="3" id="1206668378" info="Goal [T1] (header) -S.Mustafi" matchscore="1:0" mtime="36:13" player1="89894" posx="90" posy="59" side="home" stime="1511010408439" type="30"/>
+</events>
+</match>

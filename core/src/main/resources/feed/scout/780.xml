@@ -1,0 +1,8 @@
+
+<match betstatus="BETSTOP" connectionstatus="1" dc="1" feedtype="deltaupdate" matchid="11830376">
+<score t1="2" t2="0" type="current"/>
+<shotsontarget t1="2" t2="2"/>
+<events>
+<event extrainfo="0" id="1206682794" info="Goal [T1] -A.Sanchez" matchscore="2:0" mtime="41:05" player1="34120" player2="50070" posx="94" posy="62" side="home" stime="1511010700034" type="30"/>
+</events>
+</match>

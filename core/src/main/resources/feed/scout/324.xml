@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<offsides t1="2" t2="1"/>
+<events>
+<event id="1206633352" info="Offside [T2] -H.Kane. Freekick awarded to [T1]" matchscore="0:0" mtime="16:21" player1="108579" posx="42" posy="40" side="away" stime="1511009215873" type="153"/>
+</events>
+</match>

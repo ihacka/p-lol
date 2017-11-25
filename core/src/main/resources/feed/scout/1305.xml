@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<shotsontarget t1="4" t2="2"/>
+<events>
+<event id="1206816646" info="Shot on target [T1] -A.Sanchez" matchscore="2:0" mtime="75:29" player1="34120" posx="83" posy="35" side="home" stime="1511013816771" type="155"/>
+</events>
+</match>

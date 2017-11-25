@@ -3,10 +3,7 @@ package io.ilot.plol.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -37,6 +34,8 @@ public class Event {
     private Integer dangerousAttacksAway;
     private Integer scoreHome;
     private Integer scoreAway;
+    @Transient
+    private MarketLiveOdds odds;
 
 
     @OneToMany(mappedBy = "event")

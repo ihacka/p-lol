@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="deltaupdate" matchid="11830376">
+<corners t1="4" t2="0"/>
+<events>
+<event extrainfo="1" id="1206651138" info="Corner kick [T1] -M.Ozil" matchscore="0:0" mtime="28:50" player1="16176" posx="95" posy="90" side="home" stime="1511009965753" type="154"/>
+</events>
+</match>

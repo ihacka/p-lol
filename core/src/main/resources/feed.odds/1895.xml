@@ -1,0 +1,35 @@
+
+<BetradarLiveOdds timestamp="1511014988957" status="clearbet" time="9" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="ended" active="1" betstatus="stopped" earlybetstatus="stopped" clearedscore="2:0" msgnr="1119" cornershome="7" cornersaway="4" yellowcardshome="4" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Odds id="308142884" type="ftnw" subtype="104" specialoddsvalue="2:0" freetext="Correct score flex" combination="0" active="1" typeid="8">
+<OddsField type="2:0" outcome="1" active="1"/>
+<OddsField type="3:0" outcome="0" active="1"/>
+<OddsField type="4:0" outcome="0" active="1"/>
+<OddsField type="5:0" outcome="0" active="1"/>
+<OddsField type="6:0" outcome="0" active="1"/>
+<OddsField type="7:0" outcome="0" active="1"/>
+<OddsField type="8:0" outcome="0" active="1"/>
+<OddsField type="2:1" outcome="0" active="1"/>
+<OddsField type="3:1" outcome="0" active="1"/>
+<OddsField type="4:1" outcome="0" active="1"/>
+<OddsField type="5:1" outcome="0" active="1"/>
+<OddsField type="6:1" outcome="0" active="1"/>
+<OddsField type="7:1" outcome="0" active="1"/>
+<OddsField type="2:2" outcome="0" active="1"/>
+<OddsField type="3:2" outcome="0" active="1"/>
+<OddsField type="4:2" outcome="0" active="1"/>
+<OddsField type="5:2" outcome="0" active="1"/>
+<OddsField type="6:2" outcome="0" active="1"/>
+<OddsField type="2:3" outcome="0" active="1"/>
+<OddsField type="3:3" outcome="0" active="1"/>
+<OddsField type="4:3" outcome="0" active="1"/>
+<OddsField type="5:3" outcome="0" active="1"/>
+<OddsField type="2:4" outcome="0" active="1"/>
+<OddsField type="3:4" outcome="0" active="1"/>
+<OddsField type="4:4" outcome="0" active="1"/>
+<OddsField type="2:5" outcome="0" active="1"/>
+<OddsField type="3:5" outcome="0" active="1"/>
+<OddsField type="2:6" outcome="0" active="1"/>
+</Odds>
+</Match>
+</BetradarLiveOdds>

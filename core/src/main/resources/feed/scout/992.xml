@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<throwins t1="10" t2="15"/>
+<events>
+<event id="1206765690" info="Throw in [T2]" matchscore="2:0" mtime="53:03" posx="20" posy="5" side="away" stime="1511012471124" type="152"/>
+</events>
+</match>

@@ -1,0 +1,17 @@
+
+<BetradarLiveOdds timestamp="1511011101134" status="clearbet" time="2" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="paused" active="1" betstatus="started" earlybetstatus="stopped" clearedscore="2:0" msgnr="535" cornershome="4" cornersaway="0" yellowcardshome="2" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Odds id="308142870" type="ftnw" subtype="29" specialoddsvalue="2:0" freetext="Correct score first half flex" combination="0" active="1" typeid="8">
+<OddsField type="2:0" outcome="1" active="1"/>
+<OddsField type="3:0" outcome="0" active="1"/>
+<OddsField type="4:0" outcome="0" active="1"/>
+<OddsField type="5:0" outcome="0" active="1"/>
+<OddsField type="2:1" outcome="0" active="1"/>
+<OddsField type="3:1" outcome="0" active="1"/>
+<OddsField type="4:1" outcome="0" active="1"/>
+<OddsField type="2:2" outcome="0" active="1"/>
+<OddsField type="3:2" outcome="0" active="1"/>
+<OddsField type="2:3" outcome="0" active="1"/>
+</Odds>
+</Match>
+</BetradarLiveOdds>

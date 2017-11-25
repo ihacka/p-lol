@@ -1,0 +1,14 @@
+
+<BetradarLiveOdds timestamp="1511014933115" status="score" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="ended" active="1" betstatus="stopped" earlybetstatus="stopped" score="2:0" setscore1="2:0" setscore2="0:0" msgnr="1044" cornershome="7" cornersaway="4" yellowcardshome="4" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Card id="21849284" type="yellow" team="home" time="73" player="N.Monreal"/>
+<Card id="21847556" type="yellow" team="home" time="38" player="A.Sanchez"/>
+<Card id="21847302" type="yellow" team="home" time="32" player="G.Xhaka"/>
+<Score id="21847616" time="41" home="2" away="0" scoringteam="home" type="score" player="A.Sanchez"/>
+<Score id="21847516" time="36" home="1" away="0" scoringteam="home" type="score" player="S.Mustafi"/>
+<Score time="90" home="2" away="0" type="ft"/>
+<Card id="21848376" type="yellow" team="home" time="48" player="S.Mustafi"/>
+<Score time="45" home="2" away="0" type="ht"/>
+<Card id="21848436" type="yellow" team="away" time="50" player="H.Kane"/>
+</Match>
+</BetradarLiveOdds>

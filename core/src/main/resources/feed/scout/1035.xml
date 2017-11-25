@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<corners t1="5" t2="1"/>
+<events>
+<event extrainfo="1" id="1206774220" info="Corner kick [T2] -C.Eriksen" matchscore="2:0" mtime="55:46" player1="105734" posx="5" posy="5" side="away" stime="1511012634361" type="154"/>
+</events>
+</match>

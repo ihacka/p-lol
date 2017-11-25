@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<offsides t1="7" t2="1"/>
+<events>
+<event id="1206791426" info="Offside [T1] -A.Lacazette. Freekick awarded to [T2]" matchscore="2:0" mtime="61:34" player1="50070" posx="68" posy="70" side="home" stime="1511012982365" type="153"/>
+</events>
+</match>

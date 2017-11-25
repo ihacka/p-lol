@@ -1,0 +1,6 @@
+
+<BetradarLiveOdds timestamp="1511010769218" status="score" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="1p" active="1" betstatus="stopped" earlybetstatus="started" matchtime="43" score="2:0" setscore1="2:0" msgnr="447" cornershome="4" cornersaway="0" yellowcardshome="2" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Score id="21847616" time="41" home="2" away="0" scoringteam="home" type="live" player="A.Sanchez"/>
+</Match>
+</BetradarLiveOdds>

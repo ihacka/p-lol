@@ -1,0 +1,9 @@
+<matchlist>
+<match coveredfrom="tv" dc="1" distance="12" extrainfo="0" matchid="11830376" st1id="42" st2id="33" start="1511008200000" t1id="4871" t1name="ARSENAL FC" t2id="5187" t2name="TOTTENHAM HOTSPUR">
+<status id="0" name="NOT_STARTED" start="0"/>
+<score t1="0" t2="0" type="current"/>
+<tournament id="1" name="Premier League"/>
+<category id="1" name="England"/>
+<sport id="1" name="Soccer"/>
+</match>
+</matchlist>

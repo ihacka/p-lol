@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<status id="31" name="HALFTIME" start="1511011059078"/>
+<events>
+<event extrainfo="31" id="1206700072" info="HALFTIME" matchscore="2:0" mtime="45:00" side="none" stime="1511011059078" type="1013"/>
+</events>
+</match>

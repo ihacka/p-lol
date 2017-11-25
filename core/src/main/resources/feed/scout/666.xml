@@ -1,0 +1,6 @@
+
+<match betstatus="BETSTOP" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<events>
+<event id="1206668140" info="Possible goal [T1]" matchscore="0:0" mtime="36:08" side="home" stime="1511010403302" type="1018"/>
+</events>
+</match>

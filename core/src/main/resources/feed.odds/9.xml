@@ -1,0 +1,14 @@
+
+<BetradarLiveOdds timestamp="1511007301336" status="change" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="not_started" active="1" betstatus="started" earlybetstatus="stopped" score="-:-" msgnr="2" cornershome="0" cornersaway="0" yellowcardshome="0" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Odds id="307096826" type="ft3w" subtype="13" specialoddsvalue="0:0" freetext="Next goal" combination="0" active="0" changed="false" typeid="6" mostbalanced="0"/>
+<Odds id="307096866" type="3w" combination="0" active="0" changed="false" typeid="2" mostbalanced="0"/>
+<Odds id="307096838" type="to" specialoddsvalue="2.5" combination="0" active="0" changed="false" typeid="5" mostbalanced="0"/>
+<Odds id="307096850" type="ft2w" subtype="2" specialoddsvalue="-1" freetext="Which team has kick off?" combination="0" active="1" changed="true" typeid="7" mostbalanced="1">
+<OddsField type="1" active="1">1.8</OddsField>
+<OddsField type="2" active="1">1.8</OddsField>
+</Odds>
+<Odds id="307096854" type="ft3w" subtype="4" specialoddsvalue="0:0" freetext="Who wins the rest of the match?" combination="0" active="0" changed="false" typeid="6" mostbalanced="0"/>
+<Odds id="307096876" type="ft2w" subtype="16" specialoddsvalue="-1" freetext="Draw No Bet" combination="0" active="0" changed="false" typeid="7" mostbalanced="0"/>
+</Match>
+</BetradarLiveOdds>

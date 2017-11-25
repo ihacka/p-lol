@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<shotsofftarget t1="1" t2="3"/>
+<events>
+<event id="1206794130" info="Shot off target [T2] -C.Eriksen" matchscore="2:0" mtime="62:39" player1="105734" posx="17" posy="52" side="away" stime="1511013047217" type="156"/>
+</events>
+</match>

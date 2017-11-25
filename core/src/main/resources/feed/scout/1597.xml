@@ -1,0 +1,7 @@
+
+<match betstatus="BETSTOP" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<status id="100" name="ENDED" start="1511014932436"/>
+<events>
+<event extrainfo="100" id="1206877336" info="ENDED" matchscore="2:0" mtime="90:00" side="none" stime="1511014932436" type="1013"/>
+</events>
+</match>

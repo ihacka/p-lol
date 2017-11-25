@@ -1,0 +1,14 @@
+
+<BetradarLiveOdds timestamp="1511010828006" status="clearbet" time="1" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="1p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="44" clearedscore="2:0" msgnr="473" cornershome="4" cornersaway="0" yellowcardshome="2" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Odds id="308140624" type="ftnw" subtype="118" specialoddsvalue="1:0" freetext="When will next goal be scored" combination="0" active="1" typeid="8">
+<OddsField type="min 01-15" outcome="0" active="1"/>
+<OddsField type="min 16-30" outcome="0" active="1"/>
+<OddsField type="min 31-45" outcome="1" active="1"/>
+<OddsField type="min 46-60" outcome="0" active="1"/>
+<OddsField type="min 61-75" outcome="0" active="1"/>
+<OddsField type="min 76-90" outcome="0" active="1"/>
+<OddsField type="no goal" outcome="0" active="1"/>
+</Odds>
+</Match>
+</BetradarLiveOdds>

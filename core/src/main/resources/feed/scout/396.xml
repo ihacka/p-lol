@@ -1,0 +1,7 @@
+
+<match betstatus="BETSTOP" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<freekicks t1="5" t2="5"/>
+<events>
+<event extrainfo="1" id="1206641452" info="Free kick [T1]" matchscore="0:0" mtime="20:29" posx="80" posy="65" side="home" stime="1511009464601" type="150"/>
+</events>
+</match>

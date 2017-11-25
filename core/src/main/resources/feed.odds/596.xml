@@ -1,0 +1,6 @@
+
+<BetradarLiveOdds timestamp="1511010136828" status="cards" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="1p" active="1" betstatus="started" earlybetstatus="stopped" matchtime="32" score="0:0" setscore1="0:0" msgnr="306" cornershome="4" cornersaway="0" yellowcardshome="1" yellowcardsaway="0" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Card id="21847302" type="yellow" team="home" time="32" player="G.Xhaka" canceled="false"/>
+</Match>
+</BetradarLiveOdds>

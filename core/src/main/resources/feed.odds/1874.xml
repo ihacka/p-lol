@@ -1,0 +1,13 @@
+
+<BetradarLiveOdds timestamp="1511014985998" status="clearbet" time="6" xmlns="http://www.betradar.com/BetradarLiveOdds">
+<Match matchid="11830376" status="ended" active="1" betstatus="stopped" earlybetstatus="stopped" clearedscore="2:0" msgnr="1099" cornershome="7" cornersaway="4" yellowcardshome="4" yellowcardsaway="1" redcardshome="0" redcardsaway="0" yellowredcardshome="0" yellowredcardsaway="0">
+<Odds id="308117552" type="ftnw" subtype="183" specialoddsvalue="2.5" freetext="Matchbet and Totals" combination="0" active="1" typeid="8">
+<OddsField type="home and under" outcome="1" active="1"/>
+<OddsField type="draw and under" outcome="0" active="1"/>
+<OddsField type="away and under" outcome="0" active="1"/>
+<OddsField type="home and over" outcome="0" active="1"/>
+<OddsField type="draw and over" outcome="0" active="1"/>
+<OddsField type="away and over" outcome="0" active="1"/>
+</Odds>
+</Match>
+</BetradarLiveOdds>

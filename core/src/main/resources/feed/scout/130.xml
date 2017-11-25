@@ -1,0 +1,7 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<goalkicks t1="0" t2="1"/>
+<events>
+<event id="1206602824" info="Goal kick [T2]" matchscore="0:0" mtime="04:39" posx="95" posy="50" side="away" stime="1511008514051" type="151"/>
+</events>
+</match>

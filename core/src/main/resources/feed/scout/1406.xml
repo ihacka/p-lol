@@ -1,0 +1,6 @@
+
+<match betstatus="STARTED" connectionstatus="1" dc="1" feedtype="delta" matchid="11830376">
+<events>
+<event automatic="1" extrainfo="1" id="1206839738" info="Enable corner markets" matchscore="2:0" mtime="82:49" side="none" stime="1511014256781" type="1082"/>
+</events>
+</match>
