@@ -1,5 +1,7 @@
 package io.ilot.plol;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
@@ -61,6 +64,14 @@ public class PlolApplication {
         };
     }
 
+    @Bean
+    public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        MappingJackson2HttpMessageConverter converter =
+                new MappingJackson2HttpMessageConverter(mapper);
+        return converter;
+    }
 }
 
 
@@ -92,6 +103,12 @@ class Controller {
     @RequestMapping(value = "/bets/{id}", method = RequestMethod.GET)
     public ResponseEntity<Bet> placedBets(@PathVariable Long id){
         return ResponseEntity.ok(betRepository.findOne(id));
+    }
+
+    @RequestMapping(value = "/bets/userbets/{userid}", method = RequestMethod.GET)
+    public ResponseEntity<List<Bet>> userBets(@PathVariable Long userid){
+        User user = userRepository.findOne(userid);
+        return ResponseEntity.ok(betRepository.findByUser(user));
     }
 
     @RequestMapping(value = "/bets", method = RequestMethod.POST, produces = "application/json")
@@ -126,6 +143,9 @@ interface UserRepository extends JpaRepository<User, Long> {
 }
 
 interface BetRepository extends JpaRepository<Bet, Long> {
+
+    List<Bet> findByUser(User userId);
+
 }
 
 interface IncidentRepository extends JpaRepository<Incident, Long> {}
@@ -158,7 +178,8 @@ interface IncidentRepository extends JpaRepository<Incident, Long> {}
     @Transient @Setter(AccessLevel.NONE) private BigDecimal payout;
     private BigDecimal winnings;
     private Date placedTime = new Date();
-    @OneToOne private User user;
+    @OneToOne
+    private User user;
 
     public BigDecimal getPayout() {
         return Optional.ofNullable(payout).map(p -> p.subtract(stake)).orElse(BigDecimal.ZERO);
