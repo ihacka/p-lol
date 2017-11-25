@@ -1,11 +1,14 @@
 package io.ilot.plol.controller;
 
+import io.ilot.plol.ParserLiveScout;
 import io.ilot.plol.event.IncidentApplicationEvent;
 import io.ilot.plol.event.PlolEventPublisher;
 import io.ilot.plol.model.Bet;
+import io.ilot.plol.model.Event;
 import io.ilot.plol.model.Incident;
 import io.ilot.plol.model.User;
 import io.ilot.plol.repos.BetRepository;
+import io.ilot.plol.repos.EventRepository;
 import io.ilot.plol.repos.IncidentRepository;
 import io.ilot.plol.repos.UserRepository;
 import org.slf4j.Logger;
@@ -31,6 +34,10 @@ class Controller implements ApplicationListener<IncidentApplicationEvent> {
     private BetRepository betRepository;
     @Autowired
     private IncidentRepository incidentRepository;
+    @Autowired
+    private EventRepository eventRepository;
+    @Autowired
+    private ParserLiveScout parserLiveScout;
 
     @RequestMapping("/hello/{name}")
     public String hello(@PathVariable String name) {
@@ -40,6 +47,16 @@ class Controller implements ApplicationListener<IncidentApplicationEvent> {
     @RequestMapping("/users")
     public ResponseEntity<List<User>> users() {
         return ResponseEntity.ok(userRepository.findAll());
+    }
+
+    @RequestMapping("/events")
+    public ResponseEntity<List<Event>> events() {
+        return ResponseEntity.ok(eventRepository.findAll());
+    }
+
+    @RequestMapping("/incidents")
+    public ResponseEntity<List<Incident>> incidents() {
+        return ResponseEntity.ok(incidentRepository.findAll());
     }
 
     @RequestMapping(value = "/bets", method = RequestMethod.GET)
@@ -78,6 +95,15 @@ class Controller implements ApplicationListener<IncidentApplicationEvent> {
     @Autowired
     PlolEventPublisher plolEventPublisher;
 
+
+    @RequestMapping("/scout/start")
+    public void startScoutParser() {
+        try {
+            parserLiveScout.startParser();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @MessageMapping("/play")
     @SendTo("/topic/play")
