@@ -1,4 +1,4 @@
-package io.ilot.plol;
+package io.ilot.plol.model;
 
 import lombok.Data;
 
