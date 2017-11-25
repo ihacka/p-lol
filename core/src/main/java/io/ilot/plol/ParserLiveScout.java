@@ -1,25 +1,7 @@
 package io.ilot.plol;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.concurrent.Future;
-import java.util.function.Function;
 
-import javax.persistence.*;
-import javax.xml.stream.*;
-
+import io.ilot.plol.controller.WebSocketsController.WebSocketTopic;
 import io.ilot.plol.model.Event;
 import io.ilot.plol.model.Incident;
 import io.ilot.plol.model.IncidentType;
@@ -29,20 +11,32 @@ import io.ilot.plol.repos.IncidentRepository;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.codehaus.stax2.XMLInputFactory2;
-import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.stax2.XMLStreamWriter2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.xml.stream.*;
+import java.io.*;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static java.time.LocalDateTime.now;
 
 @Component
-public class ParserLiveScout
-{
+public class ParserLiveScout {
     @Autowired
     EventRepository eventRepository;
     @Autowired
     IncidentRepository incidentRepository;
+    @Autowired
+    private SimpMessagingTemplate messageSender;
 
     private InputStream inputStream;
     private OutputStream outputStream;
@@ -53,7 +47,7 @@ public class ParserLiveScout
     private boolean isMatchList = false;
     private boolean isRunning = false;
     private boolean shouldStop = false;
-//    private Odds currentOdds = null;
+    //    private Odds currentOdds = null;
     private boolean xmlDocEnded = false;
 
     private boolean useStoredMessages = false;
@@ -61,9 +55,8 @@ public class ParserLiveScout
 
     private long lastMessageTimestamp = 0;
 
-//    @Interceptors({ParsersInterceptor.class})
-    public void startParser() throws Exception
-    {
+    //    @Interceptors({ParsersInterceptor.class})
+    public void startParser() throws Exception {
         System.out.println("Parser Live Scout Started");
 
         XMLStreamReader xmlr = null;
@@ -75,8 +68,7 @@ public class ParserLiveScout
 
             shouldStop = false;
             isRunning = true;
-            while (!shouldStop)
-            {
+            while (!shouldStop) {
                 xmlr = getXmlStreamReader(inputStream, xmlif);
                 if (xmlr == null) // if stops getting data from socket or error
                     break; // happens
@@ -104,9 +96,7 @@ public class ParserLiveScout
             isRunning = false;
             System.out.println("Parser Live Scout stopped!");
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             currentMessage = null;
             currentMatch = null;
@@ -122,7 +112,7 @@ public class ParserLiveScout
 
     private void parseEndElement(String endElementName) {
         if ((currentMessage.isMatchList() && (endElementName
-                .equals(ConstantsLiveScout.E_MATCHLIST)||endElementName
+                .equals(ConstantsLiveScout.E_MATCHLIST) || endElementName
                 .equals(ConstantsLiveScout.E_MATCHLIST_UPDATE)))
                 || (!currentMessage.isMatchList() && endElementName
                 .equals(ConstantsLiveScout.E_MATCH))
@@ -136,8 +126,8 @@ public class ParserLiveScout
                 || endElementName.equals("ct")) {
             String waitTimeSinceLastMessage = "";
             long currentTimestamp = System.currentTimeMillis();
-            if (lastMessageTimestamp>0){
-                waitTimeSinceLastMessage = " (time since last xml "+(currentTimestamp - lastMessageTimestamp) + "ms)";
+            if (lastMessageTimestamp > 0) {
+                waitTimeSinceLastMessage = " (time since last xml " + (currentTimestamp - lastMessageTimestamp) + "ms)";
             }
             lastMessageTimestamp = currentTimestamp;
 //            System.out.println("Parser Live Scout - Received xml no:"+messageCounter + waitTimeSinceLastMessage);
@@ -188,38 +178,33 @@ public class ParserLiveScout
     }
 
     private XMLStreamReader getXmlStreamReader(InputStream socketInputStream,
-                                                XMLInputFactory xmlif) {
+                                               XMLInputFactory xmlif) {
         XMLStreamReader xmlr = null;
 
         boolean succeeded = false;
-        while (!succeeded)
-        {
-            try
-            {
-                    String storedMessagesFolder = folderToReadMessagesFrom;
-                    File storedFile = new File(storedMessagesFolder +(messageCounter)+ ".xml");
-                    int counter = 0;
-                    while (!storedFile.exists() && counter < 100000) {
-                        counter++;
-                        storedFile = new File(storedMessagesFolder + (++messageCounter)+ ".xml");
-                    }
-                    FileInputStream fin = new FileInputStream(storedFile);
+        while (!succeeded) {
+            try {
+                String storedMessagesFolder = folderToReadMessagesFrom;
+                File storedFile = new File(storedMessagesFolder + (messageCounter) + ".xml");
+                int counter = 0;
+                while (!storedFile.exists() && counter < 100000) {
+                    counter++;
+                    storedFile = new File(storedMessagesFolder + (++messageCounter) + ".xml");
+                }
+                FileInputStream fin = new FileInputStream(storedFile);
 
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    xmlr = (XMLStreamReader) xmlif.createXMLStreamReader(fin);
-                    succeeded = true;
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                xmlr = (XMLStreamReader) xmlif.createXMLStreamReader(fin);
+                succeeded = true;
 
-            }
-            catch (XMLStreamException e) {
+            } catch (XMLStreamException e) {
                 e.printStackTrace();
-            }
-            catch (IOException e)
-            {
-                if (useStoredMessages){
+            } catch (IOException e) {
+                if (useStoredMessages) {
                     System.out.println("All stored messages parsed.");
                     break;
                 }
@@ -230,17 +215,17 @@ public class ParserLiveScout
 
 
     private void parseElement(String elementName, XMLStreamReader xmlr)
-            throws XMLStreamException{
+            throws XMLStreamException {
 
         if (currentMessage == null
                 && elementName.equals(ConstantsLiveScout.E_MATCHLIST)) {
-            currentMessage = new LiveScoutMessage(true, false,null);
+            currentMessage = new LiveScoutMessage(true, false, null);
         } else if (currentMessage == null
                 && elementName.equals(ConstantsLiveScout.E_MATCHLIST_UPDATE)) {
-            currentMessage = new LiveScoutMessage(true, false,null);
+            currentMessage = new LiveScoutMessage(true, false, null);
         } else if (currentMessage == null
                 && elementName.equals(ConstantsLiveScout.E_ODDSSUGGESTIONS)) {
-            currentMessage = new LiveScoutMessage(false, true,currentMatch);
+            currentMessage = new LiveScoutMessage(false, true, currentMatch);
         } else if (currentMessage == null) {
             currentMessage = new LiveScoutMessage();
         }
@@ -302,17 +287,17 @@ public class ParserLiveScout
         else if (elementName.equals(ConstantsLiveScout.E_SPORT))
             parseSportElement(xmlr);
         else if (elementName.equals(ConstantsLiveScout.E_LOGIN))
-            /*parseLoginElement(xmlr)*/;
+            /*parseLoginElement(xmlr)*/ ;
         else if (elementName.equals(ConstantsLiveScout.E_USER))
-           /* parseUserElement(xmlr)*/;
+           /* parseUserElement(xmlr)*/ ;
         else if (elementName.equals(ConstantsLiveScout.E_EVENTS))
             parseEventsElement(xmlr);
         else if (elementName.equals(ConstantsLiveScout.E_BOOKMATCH))
-            /*parseBookmatchElement(xmlr)*/;
+            /*parseBookmatchElement(xmlr)*/ ;
         else if (elementName.equals("ct")) {
 
         } else
-            System.out.println("Encountered unknown element '"+ elementName + "'");
+            System.out.println("Encountered unknown element '" + elementName + "'");
     }
 
     private void parseKickoffteamElement(XMLStreamReader xmlr) {
@@ -623,52 +608,54 @@ public class ParserLiveScout
 
     private void parseFreekicksElement(XMLStreamReader xmlr) {
 
-        int prevFKH = currentMatch.getFreeKicksHome()!=null ? currentMatch.getFreeKicksHome():0;
-        int prevFKA = currentMatch.getFreeKicksAway()!=null ? currentMatch.getFreeKicksAway():0;
+        int prevFKH = currentMatch.getFreeKicksHome() != null ? currentMatch.getFreeKicksHome() : 0;
+        int prevFKA = currentMatch.getFreeKicksAway() != null ? currentMatch.getFreeKicksAway() : 0;
 
         for (int i = 0; i < xmlr.getAttributeCount(); i++) {
             String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveScout.A_FREEKICKS_T1)) {
-                currentMatch.setFreeKicksHome(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+                currentMatch.setFreeKicksHome(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             } else if (attrName.equals(ConstantsLiveScout.A_FREEKICKS_T2)) {
-                currentMatch.setFreeKicksAway(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+                currentMatch.setFreeKicksAway(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             }
         }
 
-        ParticipantType participantType = null;
-        if (prevFKH<currentMatch.getFreeKicksHome())
+        final ParticipantType participantType;
+        if (prevFKH < currentMatch.getFreeKicksHome())
             participantType = ParticipantType.HOME;
-        else if (prevFKA<currentMatch.getFreeKicksAway())
+        else if (prevFKA < currentMatch.getFreeKicksAway())
             participantType = ParticipantType.AWAY;
+        else participantType = null;
 
-        if (participantType!=null)
-            incidentRepository.save(new Incident(currentMatch.getId(), IncidentType.FREE_KICK, participantType,getCurrentDate()));
+        if (participantType != null)
+            processIncident(()->new Incident(currentMatch.getId(), IncidentType.FREE_KICK, participantType, getCurrentDate()));
 
 
     }
 
     private void parseGoalkicksElement(XMLStreamReader xmlr) {
 
-        int prevGKH = currentMatch.getGoalKicksHome()!=null ? currentMatch.getGoalKicksHome():0;
-        int prevGKA = currentMatch.getGoalKicksAway()!=null ? currentMatch.getGoalKicksAway():0;
+        int prevGKH = currentMatch.getGoalKicksHome() != null ? currentMatch.getGoalKicksHome() : 0;
+        int prevGKA = currentMatch.getGoalKicksAway() != null ? currentMatch.getGoalKicksAway() : 0;
 
         for (int i = 0; i < xmlr.getAttributeCount(); i++) {
             String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveScout.A_GOALKICKS_T1)) {
-                currentMatch.setGoalKicksHome(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+                currentMatch.setGoalKicksHome(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             } else if (attrName.equals(ConstantsLiveScout.A_GOALKICKS_T2)) {
-                currentMatch.setGoalKicksAway(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+                currentMatch.setGoalKicksAway(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             }
         }
 
-        ParticipantType participantType = null;
-        if (prevGKH<currentMatch.getGoalKicksHome())
+        ParticipantType participantType;
+        if (prevGKH < currentMatch.getGoalKicksHome())
             participantType = ParticipantType.HOME;
-        else if (prevGKA<currentMatch.getGoalKicksAway())
+        else if (prevGKA < currentMatch.getGoalKicksAway())
             participantType = ParticipantType.AWAY;
+        else participantType = null;
 
-        if (participantType!=null)
-            incidentRepository.save(new Incident(currentMatch.getId(), IncidentType.GOAL_KICK, participantType,getCurrentDate()));
+        if (participantType != null)
+            processIncident(()->new Incident(currentMatch.getId(), IncidentType.GOAL_KICK, participantType, getCurrentDate()));
     }
 
     private void parseThrowinsElement(XMLStreamReader xmlr) {
@@ -741,103 +728,109 @@ public class ParserLiveScout
 
     private void parseDangerousattacksElement(XMLStreamReader xmlr) {
 
-        int prevDAH = currentMatch.getDangerousAttacksHome()!=null ? currentMatch.getDangerousAttacksHome():0;
-        int prevDAA = currentMatch.getDangerousAttacksAway()!=null ? currentMatch.getDangerousAttacksAway():0;
+        int prevDAH = currentMatch.getDangerousAttacksHome() != null ? currentMatch.getDangerousAttacksHome() : 0;
+        int prevDAA = currentMatch.getDangerousAttacksAway() != null ? currentMatch.getDangerousAttacksAway() : 0;
 
         for (int i = 0; i < xmlr.getAttributeCount(); i++) {
             String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveScout.A_DANGEROUSATTACKS_T1)) {
-                currentMatch.setDangerousAttacksHome(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+                currentMatch.setDangerousAttacksHome(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             } else if (attrName.equals(ConstantsLiveScout.A_DANGEROUSATTACKS_T2)) {
-                currentMatch.setDangerousAttacksAway(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+                currentMatch.setDangerousAttacksAway(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             }
         }
 
-        ParticipantType participantType = null;
-        if (prevDAH<currentMatch.getDangerousAttacksHome())
+        ParticipantType participantType;
+        if (prevDAH < currentMatch.getDangerousAttacksHome())
             participantType = ParticipantType.HOME;
-        else if (prevDAA<currentMatch.getDangerousAttacksAway())
+        else if (prevDAA < currentMatch.getDangerousAttacksAway())
             participantType = ParticipantType.AWAY;
+        else participantType = null;
 
-        if (participantType!=null)
-            incidentRepository.save(new Incident(currentMatch.getId(), IncidentType.DANGEROUS_ATTACK, participantType,getCurrentDate()));
+        if (participantType != null)
+            processIncident(() ->new Incident(currentMatch.getId(), IncidentType.DANGEROUS_ATTACK, participantType, getCurrentDate()));
 
     }
 
     private void parseYellowElement(XMLStreamReader xmlr) {
 
-        ParticipantType participantType = null;
-        int prevYellowH = currentMatch.getYellowCardsHome()!=null ? currentMatch.getYellowCardsHome():0;
-        int prevYellowA = currentMatch.getYellowCardsAway()!=null ? currentMatch.getYellowCardsAway():0;
+
+        int prevYellowH = currentMatch.getYellowCardsHome() != null ? currentMatch.getYellowCardsHome() : 0;
+        int prevYellowA = currentMatch.getYellowCardsAway() != null ? currentMatch.getYellowCardsAway() : 0;
 
         for (int i = 0; i < xmlr.getAttributeCount(); i++) {
             String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveScout.A_YELLOW_T1)) {
-                currentMatch.setYellowCardsHome(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+                currentMatch.setYellowCardsHome(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
 
             } else if (attrName.equals(ConstantsLiveScout.A_YELLOW_T2)) {
-                currentMatch.setYellowCardsAway(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+                currentMatch.setYellowCardsAway(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             }
         }
-        if (prevYellowH<currentMatch.getYellowCardsHome())
+        ParticipantType participantType;
+        if (prevYellowH < currentMatch.getYellowCardsHome())
             participantType = ParticipantType.HOME;
-        else if (prevYellowA<currentMatch.getYellowCardsAway())
+        else if (prevYellowA < currentMatch.getYellowCardsAway())
             participantType = ParticipantType.AWAY;
+        else participantType = null;
 
-        if (participantType!=null)
-        incidentRepository.save(new Incident(currentMatch.getId(), IncidentType.YELLOW_CARD, participantType,getCurrentDate()));
+        if (participantType != null)
+            processIncident(() ->new Incident(currentMatch.getId(), IncidentType.YELLOW_CARD, participantType, getCurrentDate()));
 
     }
 
     private void parseCornersElement(XMLStreamReader xmlr) {
-        ParticipantType participantType = null;
-        int prevCornersH = currentMatch.getCornersHome()!=null ? currentMatch.getCornersHome():0;
-        int prevCornersA = currentMatch.getCornersAway()!=null ? currentMatch.getCornersAway():0;
+        ParticipantType participantType;
+        int prevCornersH = currentMatch.getCornersHome() != null ? currentMatch.getCornersHome() : 0;
+        int prevCornersA = currentMatch.getCornersAway() != null ? currentMatch.getCornersAway() : 0;
 
         for (int i = 0; i < xmlr.getAttributeCount(); i++) {
             String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveScout.A_CORNERS_T1)) {
-                currentMatch.setCornersHome(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+                currentMatch.setCornersHome(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
                 participantType = ParticipantType.HOME;
             } else if (attrName.equals(ConstantsLiveScout.A_CORNERS_T2)) {
-                currentMatch.setCornersAway(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+                currentMatch.setCornersAway(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
                 participantType = ParticipantType.AWAY;
             }
         }
 
-        if (prevCornersH<currentMatch.getCornersHome())
+        if (prevCornersH < currentMatch.getCornersHome())
             participantType = ParticipantType.HOME;
-        else if (prevCornersA<currentMatch.getCornersAway())
+        else if (prevCornersA < currentMatch.getCornersAway())
             participantType = ParticipantType.AWAY;
+        else
+            participantType = null;
 
-        if (participantType!=null)
-        incidentRepository.save(new Incident(currentMatch.getId(), IncidentType.CORNER, participantType,getCurrentDate()));
-
-
+        if (participantType != null){
+            final ParticipantType resolvedParticipantType = participantType;
+            processIncident(() -> new Incident(currentMatch.getId(), IncidentType.CORNER, resolvedParticipantType, getCurrentDate()));
+        }
     }
 
     private void parseRedElement(XMLStreamReader xmlr) {
-            ParticipantType participantType = null;
-            int prevRedH = currentMatch.getRedCardsHome()!=null ? currentMatch.getRedCardsHome():0;
-            int prevRedA = currentMatch.getRedCardsAway()!=null ? currentMatch.getRedCardsAway():0;
+        ParticipantType participantType;
+        int prevRedH = currentMatch.getRedCardsHome() != null ? currentMatch.getRedCardsHome() : 0;
+        int prevRedA = currentMatch.getRedCardsAway() != null ? currentMatch.getRedCardsAway() : 0;
 
-            for (int i = 0; i < xmlr.getAttributeCount(); i++) {
-                String attrName = xmlr.getAttributeLocalName(i);
-                if (attrName.equals(ConstantsLiveScout.A_RED_T1)) {
-                    currentMatch.setRedCardsHome(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
+        for (int i = 0; i < xmlr.getAttributeCount(); i++) {
+            String attrName = xmlr.getAttributeLocalName(i);
+            if (attrName.equals(ConstantsLiveScout.A_RED_T1)) {
+                currentMatch.setRedCardsHome(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
 
-                } else if (attrName.equals(ConstantsLiveScout.A_RED_T2)) {
-                    currentMatch.setRedCardsAway(xmlr.getAttributeValue(i)!=null ? Integer.parseInt(xmlr.getAttributeValue(i)): null);
-                }
+            } else if (attrName.equals(ConstantsLiveScout.A_RED_T2)) {
+                currentMatch.setRedCardsAway(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             }
+        }
 
-        if (prevRedH<currentMatch.getRedCardsHome())
+        if (prevRedH < currentMatch.getRedCardsHome())
             participantType = ParticipantType.HOME;
-        else if (prevRedA<currentMatch.getRedCardsAway())
+        else if (prevRedA < currentMatch.getRedCardsAway())
             participantType = ParticipantType.AWAY;
+        else participantType = null;
 
-        if (participantType!=null)
-            incidentRepository.save(new Incident(currentMatch.getId(), IncidentType.RED_CARD, participantType,getCurrentDate()));
+        if (participantType != null)
+            processIncident(() -> new Incident(currentMatch.getId(), IncidentType.RED_CARD, participantType, getCurrentDate()));
 
     }
 
@@ -871,56 +864,58 @@ public class ParserLiveScout
 
     private void parseScoreElement(XMLStreamReader xmlr) {
 
-        int prevScoreH = currentMatch.getScoreHome()!=null ? currentMatch.getScoreHome():0;
-        int prevScoreA = currentMatch.getScoreAway()!=null ? currentMatch.getScoreAway():0;
+        int prevScoreH = currentMatch.getScoreHome() != null ? currentMatch.getScoreHome() : 0;
+        int prevScoreA = currentMatch.getScoreAway() != null ? currentMatch.getScoreAway() : 0;
 
-            String score="";
-            ParticipantType participantType = null;
-            for (int i = 0; i < xmlr.getAttributeCount(); i++) {
-                String attrName = xmlr.getAttributeLocalName(i);
-                if (attrName.equals(ConstantsLiveScout.A_SCORE_T1)) {
-                    score+="HOME:"+xmlr.getAttributeValue(i);
-                    currentMatch.setScoreHome(xmlr.getAttributeValue(i)!=null ?Integer.parseInt(xmlr.getAttributeValue(i)) :null);
-                } else if (attrName.equals(ConstantsLiveScout.A_SCORE_T2)) {
-                    score+="AWAY:"+xmlr.getAttributeValue(i);
-                    currentMatch.setScoreAway(xmlr.getAttributeValue(i)!=null ?Integer.parseInt(xmlr.getAttributeValue(i)) :null);
-                } else if (attrName.equals(ConstantsLiveScout.A_SCORE_TYPE)) {
-                    score+=(xmlr.getAttributeValue(i));
-                }
+        String score = "";
+
+        for (int i = 0; i < xmlr.getAttributeCount(); i++) {
+            String attrName = xmlr.getAttributeLocalName(i);
+            if (attrName.equals(ConstantsLiveScout.A_SCORE_T1)) {
+                score += "HOME:" + xmlr.getAttributeValue(i);
+                currentMatch.setScoreHome(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
+            } else if (attrName.equals(ConstantsLiveScout.A_SCORE_T2)) {
+                score += "AWAY:" + xmlr.getAttributeValue(i);
+                currentMatch.setScoreAway(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
+            } else if (attrName.equals(ConstantsLiveScout.A_SCORE_TYPE)) {
+                score += (xmlr.getAttributeValue(i));
             }
-            currentMatch.setScore(score);
-        if (prevScoreH<currentMatch.getScoreHome())
+        }
+        currentMatch.setScore(score);
+        ParticipantType participantType;
+        if (prevScoreH < currentMatch.getScoreHome())
             participantType = ParticipantType.HOME;
-        else if (prevScoreA<currentMatch.getScoreAway())
+        else if (prevScoreA < currentMatch.getScoreAway())
             participantType = ParticipantType.AWAY;
+        else participantType = null;
 
-        if (participantType!=null)
-             incidentRepository.save(new Incident(currentMatch.getId(), IncidentType.GOAL, participantType,getCurrentDate()));
+        if (participantType != null)
+            processIncident(() -> new Incident(currentMatch.getId(), IncidentType.GOAL, participantType, getCurrentDate()));
 
     }
 
 
-
     private void parseStatusElement(XMLStreamReader xmlr) {
-        IncidentType incidentType = null;
+        IncidentType incidentType=null;
         for (int i = 0; i < xmlr.getAttributeCount(); i++) {
             String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveScout.A_STATUS_NAME)) {
                 currentMatch.setPeriod(xmlr.getAttributeValue(i));
-               if(currentMatch.getPeriod().equals("FIRST_HALF")) {
+                if (currentMatch.getPeriod().equals("FIRST_HALF")) {
                     incidentType = IncidentType.FIRST_HALF;
-               }else if(currentMatch.getPeriod().equals("HALFTIME")) {
+                } else if (currentMatch.getPeriod().equals("HALFTIME")) {
                     incidentType = IncidentType.HALFTIME;
-               }else if(currentMatch.getPeriod().equals("SECOND_HALF")) {
-                   incidentType = IncidentType.SECOND_HALF;
-               }else if (currentMatch.getPeriod().equals("ENDED")){
-                   incidentType = IncidentType.MATCH_ENDED;
-               }
-
+                } else if (currentMatch.getPeriod().equals("SECOND_HALF")) {
+                    incidentType = IncidentType.SECOND_HALF;
+                } else if (currentMatch.getPeriod().equals("ENDED")) {
+                    incidentType = IncidentType.MATCH_ENDED;
+                }
             }
         }
-        if (incidentType!=null)
-            incidentRepository.save(new Incident(currentMatch.getId(),incidentType, null,getCurrentDate()));
+        if (incidentType != null) {
+            final IncidentType resolvedIncidentType = incidentType;
+            processIncident(() -> new Incident(currentMatch.getId(), resolvedIncidentType, null, getCurrentDate()));
+        }
 
     }
 
@@ -945,50 +940,50 @@ public class ParserLiveScout
     private void parseEventElement(XMLStreamReader xmlr) {
 //        Activity newActivity = new Activity();
 //        try {
-            for (int i = 0; i < xmlr.getAttributeCount(); i++) {
-                String attrName = xmlr.getAttributeLocalName(i);
-                if (attrName.equals(ConstantsLiveScout.A_EVENT_ID)) {
+        for (int i = 0; i < xmlr.getAttributeCount(); i++) {
+            String attrName = xmlr.getAttributeLocalName(i);
+            if (attrName.equals(ConstantsLiveScout.A_EVENT_ID)) {
 //                    newActivity.setId(xmlr.getAttributeAsLong(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_INFO)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_INFO)) {
 //                    newActivity.setInfo(xmlr.getAttributeValue(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_MTIME)) {
-                    currentMatch.setMatchTime(xmlr.getAttributeValue(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_SIDE)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_MTIME)) {
+                currentMatch.setMatchTime(xmlr.getAttributeValue(i));
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_SIDE)) {
 //                    newActivity.setSide(HomeAwayType.getHomeAwayType(xmlr.getAttributeValue(i)));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_STIME)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_STIME)) {
 //                    newActivity.setStime(xmlr.getAttributeAsLong(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_TYPE)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_TYPE)) {
 //                    newActivity.setType(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_POSX)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_POSX)) {
 //                    newActivity.setPosx(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_POSY)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_POSY)) {
 //                    newActivity.setPosy(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_PLAYER1)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_PLAYER1)) {
 //                    newActivity.setPlayer1(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_PLAYER2)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_PLAYER2)) {
 //                    newActivity.setPlayer2(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_GAMENUMBER)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_GAMENUMBER)) {
 //                    newActivity.setGameNumber(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_SETNUMBER)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_SETNUMBER)) {
 //                    newActivity.setSetNumber(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_GAMESCORE)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_GAMESCORE)) {
 //                    newActivity.setGameScore(xmlr.getAttributeValue(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_SETSCORE)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_SETSCORE)) {
 //                    newActivity.setSetScore(xmlr.getAttributeValue(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_MATCHSCORE)) {
-                    currentMatch.setScore(xmlr.getAttributeValue(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_PERIODNUMBER)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_MATCHSCORE)) {
+                currentMatch.setScore(xmlr.getAttributeValue(i));
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_PERIODNUMBER)) {
 //                    newActivity.setPeriodNumber(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_REMAININGTIMEPERIOD)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_REMAININGTIMEPERIOD)) {
 //                    newActivity.setRemainingTimePeriod(xmlr.getAttributeValue(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_EXTRAINFO)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_EXTRAINFO)) {
 //                    newActivity.setExtraInfo(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_CORRECTEDFROM)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_CORRECTEDFROM)) {
 //                    newActivity.setCorrectedfrom(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_EVENT_CORRECTEDTO)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_EVENT_CORRECTEDTO)) {
 //                    newActivity.setCorrectedTo(xmlr.getAttributeAsInt(i));
-                }
             }
+        }
 //            currentMatch.getActivities().add(newActivity);
 //        } catch (XMLStreamException e) {
 //            e.printStackTrace();
@@ -996,60 +991,59 @@ public class ParserLiveScout
 
     }
 
-    private void parseMatchElement(XMLStreamReader xmlr)
-    {
+    private void parseMatchElement(XMLStreamReader xmlr) {
         if (currentMatch == null)
             currentMatch = new Event();
 //
         for (int i = 0; i < xmlr.getAttributeCount(); i++) {
             String attrName = xmlr.getAttributeLocalName(i);
 //            try {
-                if (attrName.equals(ConstantsLiveScout.A_MATCH_BETSTATUS)) {
-                    currentMatch.setBetStatus(xmlr.getAttributeValue(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_CONNECTIONSTATUS)) {
+            if (attrName.equals(ConstantsLiveScout.A_MATCH_BETSTATUS)) {
+                currentMatch.setBetStatus(xmlr.getAttributeValue(i));
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_CONNECTIONSTATUS)) {
 //                    currentMatch.setConnectionStatus(xmlr.getAttributeAsBoolean(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_DC)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_DC)) {
 //                    currentMatch.setDeepCoverage(xmlr.getAttributeAsBoolean(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_DISTANCE)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_DISTANCE)) {
 //                    currentMatch.setDistance(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_EXTRAINFO)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_EXTRAINFO)) {
 //                    currentMatch.setExtraInfo(ExtraInfo.getExtraInfo(xmlr.getAttributeAsInt(i)));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_FEEDTYPE)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_FEEDTYPE)) {
 //                    currentMatch.setFeedType(FeedType.getFeedType(xmlr.getAttributeValue(i)));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_FIRSTSERVE)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_FIRSTSERVE)) {
 //                    currentMatch.setFirstServe(HomeAwayType.getHomeAwayType(xmlr.getAttributeValue(i)));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_MATCHID)) {
-                    currentMatch.setId(xmlr.getAttributeValue(i)!=null ? Long.parseLong(xmlr.getAttributeValue(i)): null);
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_NUMBEROFSETS)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_MATCHID)) {
+                currentMatch.setId(xmlr.getAttributeValue(i) != null ? Long.parseLong(xmlr.getAttributeValue(i)) : null);
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_NUMBEROFSETS)) {
 //                    currentMatch.setNumberOfSets(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_START)) {
-                    currentMatch.setKickOff(xmlr.getAttributeValue(i)!=null ? Long.parseLong(xmlr.getAttributeValue(i)): null);
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T1ID)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_START)) {
+                currentMatch.setKickOff(xmlr.getAttributeValue(i) != null ? Long.parseLong(xmlr.getAttributeValue(i)) : null);
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T1ID)) {
 //                    currentMatch.setT1id(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T1UID)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T1UID)) {
 //                    currentMatch.setSt1id(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T2ID)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T2ID)) {
 //                    currentMatch.setT2id(xmlr.getAttributeAsInt(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T2UID)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T2UID)) {
 //                    currentMatch.setSt2id(xmlr.getAttributeAsInt(i));
-                }else if (attrName.equals(ConstantsLiveScout.A_MATCH_T1NAME)) {
-                    currentMatch.setHomeName(xmlr.getAttributeValue(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T2NAME)) {
-                    currentMatch.setAwayName(xmlr.getAttributeValue(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_TIEBREAKLASTSET)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T1NAME)) {
+                currentMatch.setHomeName(xmlr.getAttributeValue(i));
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_T2NAME)) {
+                currentMatch.setAwayName(xmlr.getAttributeValue(i));
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_TIEBREAKLASTSET)) {
 //                    currentMatch.setTieBreakLastSet(xmlr.getAttributeAsBoolean(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_TIMERUNNING)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_TIMERUNNING)) {
 //                    currentMatch.setTimeRunning(xmlr.getAttributeAsBoolean(i));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_WONJUMPBALL)) {
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_WONJUMPBALL)) {
 //                    currentMatch.setWonJumpBall(HomeAwayType.getHomeAwayType(xmlr.getAttributeValue(i)));
-                } else if (attrName.equals(ConstantsLiveScout.A_MATCH_TIME)) {
-                    currentMatch.setMatchTime(xmlr.getAttributeValue(i));
-                }else{
+            } else if (attrName.equals(ConstantsLiveScout.A_MATCH_TIME)) {
+                currentMatch.setMatchTime(xmlr.getAttributeValue(i));
+            } else {
 
-                }
+            }
 
-                if (currentMatch.getName()==null && currentMatch.getHomeName()!= null && currentMatch.getAwayName() !=null )
-                    currentMatch.setName();
+            if (currentMatch.getName() == null && currentMatch.getHomeName() != null && currentMatch.getAwayName() != null)
+                currentMatch.setName();
        /*     }  catch (XMLStreamException e) {
                 e.printStackTrace();
             }*/
@@ -1061,15 +1055,11 @@ public class ParserLiveScout
 
     }
 
-    private void handleCurrentMessage()
-    {
-        try{
-            if (currentMatch != null)
-            {
+    private void handleCurrentMessage() {
+        try {
+            if (currentMatch != null) {
                 eventRepository.save(currentMatch);
-            }
-            else if (currentMessage.isHasOdds())
-            {
+            } else if (currentMessage.isHasOdds()) {
                 //do nothing, we ignore odds offered by liveScout feed.
             }
            /* else if (currentMatch != null) {
@@ -1145,9 +1135,7 @@ public class ParserLiveScout
                     }
                 }
             }*/
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -1186,12 +1174,20 @@ public class ParserLiveScout
 
     }*/
 
-    private Date getCurrentDate(){
+    private Date getCurrentDate() {
         final Function<LocalDateTime, Date> asDate = ldt -> Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
         return asDate.apply(now());
     }
 
-    @Entity @Data @NoArgsConstructor class LiveScoutMessage {
+    private void processIncident(Supplier<Incident> s) {
+        messageSender.convertAndSend(WebSocketTopic.PLAY.topicName(), s.get());
+    }
+
+
+    @Entity
+    @Data
+    @NoArgsConstructor
+    class LiveScoutMessage {
         @Id
         private int matchid;
         private boolean isMatchList;
@@ -1199,11 +1195,12 @@ public class ParserLiveScout
         @OneToOne
         private Event event;
 
-        LiveScoutMessage(boolean isMatchList, boolean hasOdds, Event event){
+        LiveScoutMessage(boolean isMatchList, boolean hasOdds, Event event) {
             this.hasOdds = hasOdds;
             this.isMatchList = isMatchList;
             this.event = event;
         }
     }
+
 
 }
