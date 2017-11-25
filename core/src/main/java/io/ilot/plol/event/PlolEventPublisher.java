@@ -1,5 +1,6 @@
 package io.ilot.plol.event;
 
+import io.ilot.plol.controller.WebSocketsController.WebSocketTopic;
 import io.ilot.plol.repos.IncidentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,7 @@ public class PlolEventPublisher {
         ir.findAll(new Sort(new Sort.Order(Sort.Direction.ASC,"when")))
                 .stream()
                 .peek(e -> logger.info(e.toString()))
-                .forEach(incident -> template.convertAndSend("/topic/play", incident));
+                .forEach(incident -> template.convertAndSend(WebSocketTopic.PLAY.topicName(), incident));
     }
 
 }
