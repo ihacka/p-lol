@@ -195,7 +195,7 @@ public class ParserLiveScout {
                 FileInputStream fin = new FileInputStream(storedFile);*/
 
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(300);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
