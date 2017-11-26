@@ -10,23 +10,24 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.Future;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 
 import io.ilot.plol.model.*;
+import io.ilot.plol.repos.MarketRepository;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.codehaus.stax2.XMLInputFactory2;
-import org.codehaus.stax2.XMLStreamReader2;
-import org.codehaus.stax2.XMLStreamWriter2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -34,6 +35,8 @@ import org.springframework.stereotype.Component;
 public class ParserLiveOdds
 {
 
+    @Autowired
+    MarketRepository marketRepository;
     private InputStream inputStream;
     private OutputStream outputStream;
 
@@ -75,7 +78,7 @@ public class ParserLiveOdds
             System.out.println("Parser Live Odds Started");
             if (useStoredMessages)
                 messageCounter = 1;
-            XMLStreamReader2 xmlr = null;
+            XMLStreamReader xmlr = null;
 
             XMLInputFactory xmlif = getXmlInputFactory2Instance();
 
@@ -84,7 +87,7 @@ public class ParserLiveOdds
 
             while (!shouldStop())
             {
-                xmlr = getXmlStreamReader(xmlif);
+                xmlr = (XMLStreamReader) getXmlStreamReader(xmlif);
 
                 if (xmlr==null) //if stops getting data from socket or error happens
                     break;
@@ -113,8 +116,8 @@ public class ParserLiveOdds
                             else if (endElementName.equals(ConstantsLiveOdds.E_MATCH))
                             {
 //                                currentMessage.addSportEvent(currentMatch);
-                                currentMatch = null;
-                                currentClearedScore = null;
+//                                currentMatch = null;
+//                                currentClearedScore = null;
                             }
                             else if (endElementName.equals(ConstantsLiveOdds.E_ODDS))
                             {
@@ -140,7 +143,7 @@ public class ParserLiveOdds
             e.printStackTrace();
 
             currentMessage = null;
-            currentMatch = null;
+//            currentMatch = null;
             currentOdd = null;
             if (useStoredMessages)
                 messageCounter = 1;
@@ -173,9 +176,9 @@ public class ParserLiveOdds
 
 
 
-    private XMLStreamReader2 getXmlStreamReader(XMLInputFactory xmlif)
+    private XMLStreamReader getXmlStreamReader(XMLInputFactory xmlif)
     {
-        XMLStreamReader2 xmlr = null;
+        XMLStreamReader xmlr = null;
 
         boolean succeeded = false;
         while (!succeeded)
@@ -198,7 +201,7 @@ public class ParserLiveOdds
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    xmlr = (XMLStreamReader2) xmlif.createXMLStreamReader(fin);
+                    xmlr = (XMLStreamReader) xmlif.createXMLStreamReader(fin);
                     succeeded = true;
                 }
 
@@ -226,7 +229,7 @@ public class ParserLiveOdds
 
 
 
-    private void parseElement(String elementName, XMLStreamReader2 xmlr) throws XMLStreamException, Exception
+    private void parseElement(String elementName, XMLStreamReader xmlr) throws XMLStreamException, Exception
     {
         if (elementName.equals(ConstantsLiveOdds.E_BETRADARLIVEODDS))
             parseMessageBasicInfo(xmlr);
@@ -261,7 +264,7 @@ public class ParserLiveOdds
         else if (elementName.equals(ConstantsLiveOdds.E_INFO))
             parseInfoElement(xmlr);
         else if (elementName.equals(ConstantsLiveOdds.E_TRANSLATION))
-            xmlr.skipElement();/*Ignore*/
+        {   /*xmlr.skipElement();Ignore*/}
         else if (elementName.equals(ConstantsLiveOdds.E_SPORT))
             parseSportElement(xmlr);
         else if (elementName.equals(ConstantsLiveOdds.E_DATEOFMATCH))
@@ -272,26 +275,26 @@ public class ParserLiveOdds
 
     }
 
-    private void parseMessageBasicInfo(XMLStreamReader2 xmlr) throws XMLStreamException, Exception
+    private void parseMessageBasicInfo(XMLStreamReader xmlr) throws XMLStreamException, Exception
     {
         LiveOddsMessage message = new LiveOddsMessage();
         for (int i=0; i<xmlr.getAttributeCount();i++)
         {
             String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveOdds.A_BETRADARLIVEODDS_TIMESTAMP))
-                message.setCurrentTimestamp(xmlr.getAttributeAsLong(i));
+                message.setCurrentTimestamp(xmlr.getAttributeValue(i) != null ? Long.parseLong(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_BETRADARLIVEODDS_TIME))
-                message.setTime(xmlr.getAttributeAsLong(i));
+                message.setTime(xmlr.getAttributeValue(i) != null ? Long.parseLong(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_BETRADARLIVEODDS_STATUS))
                 message.setMessageStatus(MessageStatusLiveOdds.getMessageStatus(xmlr.getAttributeValue(i)));
             else if (attrName.equals(ConstantsLiveOdds.A_BETRADARLIVEODDS_REPLYTYPE))
                 message.setReplyType(ReplyTypeLiveOdds.getReplyType(xmlr.getAttributeValue(i)));
             else if (attrName.equals(ConstantsLiveOdds.A_BETRADARLIVEODDS_REPLYNR))
-                message.setReplyNr(xmlr.getAttributeAsInt(i));
+                message.setReplyNr(xmlr.getAttributeValue(i) != null ? Long.parseLong(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_BETRADARLIVEODDS_STARTTIME))
-                message.setStartTime(xmlr.getAttributeAsLong(i));
+                message.setStartTime(xmlr.getAttributeValue(i) != null ? Long.parseLong(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_BETRADARLIVEODDS_ENDTIME))
-                message.setEndTime(xmlr.getAttributeAsLong(i));
+                message.setEndTime(xmlr.getAttributeValue(i) != null ? Long.parseLong(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_BETRADARLIVEODDS_XMLNS))
             {/*Ignore*/}
             else if (attrName.equals(ConstantsLiveOdds.A_BETRADARLIVEODDS_TYPE))
@@ -303,14 +306,14 @@ public class ParserLiveOdds
         currentMessage = message;
     }
 
-    private void parseDateOfMatchElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseDateOfMatchElement(XMLStreamReader xmlr) throws XMLStreamException
     {
 //        xmlr.next();
 //        long eventDateTimestamp = Long.parseLong(xmlr.getText().trim());
 //        currentMatch.setEventDate(eventDateTimestamp);
     }
 
-    private void parseSportElement(XMLStreamReader2 xmlr) throws Exception, XMLStreamException
+    private void parseSportElement(XMLStreamReader xmlr) throws Exception, XMLStreamException
     {
        /* int sportID = Integer.parseInt(xmlr.getAttributeValue(null, ConstantsLiveOdds.A_SPORT_ID));
         xmlr.next();
@@ -319,13 +322,13 @@ public class ParserLiveOdds
         currentMatch.setSportName(sportName);*/
     }
 
-    private void parseTVChannelElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseTVChannelElement(XMLStreamReader xmlr) throws XMLStreamException
     {
 //        xmlr.next();
 //        currentMatch.addTVChannel(xmlr.getText().trim());
     }
 
-    private void parseInfoElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseInfoElement(XMLStreamReader xmlr) throws XMLStreamException
     {
 //        String infoType = xmlr.getAttributeValue(0);
 //        xmlr.next();
@@ -333,7 +336,7 @@ public class ParserLiveOdds
 //        currentMatch.addExtraInfo(infoType, value);
     }
 
-    private void parseTournamentElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseTournamentElement(XMLStreamReader xmlr) throws XMLStreamException
     {
 //        Tournament tournament = new Tournament();
 //        tournament.setId(xmlr.getAttributeAsInt(0));
@@ -342,7 +345,7 @@ public class ParserLiveOdds
 //        currentMatch.setTournament(tournament);
     }
 
-    private void parseCategoryElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseCategoryElement(XMLStreamReader xmlr) throws XMLStreamException
     {
 //        Category category = new Category();
 //        category.setId(xmlr.getAttributeAsInt(0));
@@ -351,7 +354,7 @@ public class ParserLiveOdds
 //        currentMatch.setCategory(category);
     }
 
-    private void parseHomeTeamElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseHomeTeamElement(XMLStreamReader xmlr) throws XMLStreamException
     {
 //        SportsTeam team = new SportsTeam();
 //        for (int i=0; i<xmlr.getAttributeCount(); i++)
@@ -371,7 +374,7 @@ public class ParserLiveOdds
 
     }
 
-    private void parseAwayTeamElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseAwayTeamElement(XMLStreamReader xmlr) throws XMLStreamException
     {
 //        SportsTeam team = new SportsTeam();
 //        for (int i=0; i<xmlr.getAttributeCount(); i++)
@@ -391,21 +394,31 @@ public class ParserLiveOdds
 
     }
 
-    private void parseMatchElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseMatchElement(XMLStreamReader xmlr) throws XMLStreamException
     {
-       /* Event match;
+  /*      Event match = new Event();
+        match.setId(Long.parseLong(xmlr.getAttributeValue(null, ConstantsLiveOdds.A_MATCH_MATCHID)));
 //		long matchID = Long.parseLong(xmlr.getAttributeValue(null, ConstantsLiveOdds.A_MATCH_MATCHID));
 //		if (activeMatches.containsKey(matchID))
 //			match = activeMatches.get(matchID);
 //		else
-        match = new Event();
+//        match = new Event();*/
 
-        //We use this if/else way because the Match element doesn't always have the same number of attributes.
-        for (int i=0; i<xmlr.getAttributeCount(); i++)
-        {
-            String attrName = xmlr.getAttributeLocalName(i);
+        if (currentMatch==null) {
+            currentMatch = new Event();
+            //We use this if/else way because the Match element doesn't always have the same number of attributes.
+            for (int i = 0; i < xmlr.getAttributeCount(); i++) {
+                String attrName = xmlr.getAttributeLocalName(i);
+                if (attrName.equals(ConstantsLiveOdds.A_MATCH_MATCHID))
+                    currentMatch.setId(xmlr.getAttributeValue(i) != null ? Long.parseLong(xmlr.getAttributeValue(i)) : null);
+                else {
+
+                }
+            }
+        }
+            /*String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveOdds.A_MATCH_ACTIVE))
-                match.setActive(xmlr.getAttributeAsBoolean(i));
+//                match.setActive(xmlr.getAttributeAsBoolean(i));
             else if (attrName.equals(ConstantsLiveOdds.A_MATCH_MATCHID))
                 match.setId(xmlr.getAttributeAsInt(i));
             else if (attrName.equals(ConstantsLiveOdds.A_MATCH_BETSTATUS))
@@ -517,7 +530,7 @@ public class ParserLiveOdds
         currentMatch = match;*/
     }
 
-    private void parseOddsFieldElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseOddsFieldElement(XMLStreamReader xmlr) throws XMLStreamException
     {
         OddField oddfield = new OddField();
         boolean  hasOutcome = false;
@@ -525,14 +538,14 @@ public class ParserLiveOdds
         {
             String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveOdds.A_ODDSFIELD_ACTIVE))
-                oddfield.setActive(xmlr.getAttributeAsBoolean(i));
+                oddfield.setActive(xmlr.getAttributeValue(i) != null ? Boolean.parseBoolean(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_ODDSFIELD_TYPE))
                 oddfield.setType(xmlr.getAttributeValue(i));
             else if (attrName.equals(ConstantsLiveOdds.A_ODDSFIELD_VOIDFACTOR))
-                oddfield.setVoidFactor(xmlr.getAttributeAsFloat(i));
+                oddfield.setVoidFactor(xmlr.getAttributeValue(i) != null ? Float.parseFloat(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_ODDSFIELD_OUTCOME))
             {
-                oddfield.setFinalOutcome(xmlr.getAttributeAsBoolean(i));
+                oddfield.setFinalOutcome(xmlr.getAttributeValue(i) != null ? Boolean.parseBoolean(xmlr.getAttributeValue(i)) : null);
                 hasOutcome = true;
             }
             else
@@ -551,7 +564,7 @@ public class ParserLiveOdds
         currentOdd.addOddField(oddfield);
     }
 
-    private void parseOddElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseOddElement(XMLStreamReader xmlr) throws XMLStreamException
     {
         MarketLiveOdds odd = new MarketLiveOdds();
 
@@ -559,25 +572,25 @@ public class ParserLiveOdds
         {
             String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveOdds.A_ODDS_ID))
-                odd.setId(xmlr.getAttributeAsInt(i));
+                odd.setId(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_ODDS_FREETEXT))
                 odd.setTitle(xmlr.getAttributeValue(i));
             else if (attrName.equals(ConstantsLiveOdds.A_ODDS_TYPEID))
-                odd.setTypeID(xmlr.getAttributeAsInt(i));
+                odd.setTypeID(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_ODDS_TYPE))
                 odd.setType(xmlr.getAttributeValue(i));
             else if (attrName.equals(ConstantsLiveOdds.A_ODDS_SUBTYPE))
-                odd.setSubtype(xmlr.getAttributeAsInt(i));
+                odd.setSubtype(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_ODDS_SPECIALODDSVALUE))
                 odd.setSpecialOddsValue(xmlr.getAttributeValue(i));
             else if (attrName.equals(ConstantsLiveOdds.A_ODDS_MOSTBALANCED))
-                odd.setMostBalanced(xmlr.getAttributeAsInt(i)==1);
+                odd.setMostBalanced((xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null)==1);
             else if (attrName.equals(ConstantsLiveOdds.A_ODDS_COMBINATION))
-                odd.setCombinations(xmlr.getAttributeAsInt(i));
+                odd.setCombinations(xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null);
             else if (attrName.equals(ConstantsLiveOdds.A_ODDS_ACTIVE))
-                odd.setActive(xmlr.getAttributeAsInt(i)==1);
+                odd.setActive((xmlr.getAttributeValue(i) != null ? Integer.parseInt(xmlr.getAttributeValue(i)) : null)==1);
             else if (attrName.equals(ConstantsLiveOdds.A_ODDS_CHANGED))
-                odd.setChanged(xmlr.getAttributeAsBoolean(i));
+                odd.setChanged(xmlr.getAttributeValue(i) != null ? Boolean.parseBoolean(xmlr.getAttributeValue(i)) : null);
             else
                 System.out.println("Match id:"+currentMatch.getId()+". Encountered unknown attribute '"+attrName+"' in element "+ConstantsLiveOdds.E_ODDS);
 //				throw new ParserBetRadarException("Match id:"+currentMatch.getId()+". Encountered unknown attribute '"+attrName+"' in element "+ConstantsLiveOdds.E_ODDS);
@@ -588,7 +601,7 @@ public class ParserLiveOdds
         currentOdd = odd;
     }
 
-    private void parseMessageElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseMessageElement(XMLStreamReader xmlr) throws XMLStreamException
     {
         //There should be a CHARACTER event following
         xmlr.next();
@@ -597,7 +610,7 @@ public class ParserLiveOdds
         // TODO: Should show to the operator's gui or log?
     }
 
-    private void parseScoreElement(XMLStreamReader2 xmlr) throws XMLStreamException
+    private void parseScoreElement(XMLStreamReader xmlr) throws XMLStreamException
     {
         /*ScoreType scoreType = CommonScoreType.getScoreType(xmlr.getAttributeValue(null, ConstantsLiveOdds.A_SCORE_TYPE));
         if (scoreType.equals(CommonScoreType.SCORE) || scoreType.equals(CommonScoreType.LIVE)) // it's a single goal
@@ -658,7 +671,7 @@ public class ParserLiveOdds
         }*/
     }
 
-    private void parseCardElement(XMLStreamReader2 xmlr) throws XMLStreamException,Exception
+    private void parseCardElement(XMLStreamReader xmlr) throws XMLStreamException,Exception
     {
         /*SoccerBooking booking = new SoccerBooking();
 
@@ -693,30 +706,85 @@ public class ParserLiveOdds
 
     private void handleCurrentMessage() throws XMLStreamException, IOException
     {
-        /*update event markets*/
-        List <Market> markets = new ArrayList<>();
 
-        for (MarketLiveOdds mlo : marketLiveOdds){
-            Market m = new Market();
-            m.setName(mlo.getTitle());
-            List<Selection> selections = new ArrayList<>();
-            for (OddField of : mlo.getOddFieldsList()){
-                Selection selection = new Selection();
-                selection.setOdd(of.getValue());
-                selection.setActive(of.isActive());
-                selections.add(selection);
+        if (currentMatch== null)
+            return;
+        /*update event markets*/
+        List <Market> newMarkets = new ArrayList<>();
+        List<Long> prevMarketIds = new ArrayList<>();
+        if (currentMatch.getMarkets()==null)
+            currentMatch.setMarkets(new ArrayList<>());
+        prevMarketIds = currentMatch.getMarkets().stream().map(m->m.getId()).collect(Collectors.toList());
+
+
+
+        if (currentMessage.getMessageStatus().equals(MessageStatusLiveOdds.CHANGE) || currentMessage.getMessageStatus().equals(MessageStatusLiveOdds.CLEARBET ))
+        {
+
+            for (MarketLiveOdds mlo : marketLiveOdds) {
+
+                if (prevMarketIds.contains(mlo.getId()) && mlo.isChanged()) {
+                /*update existing market*/
+                    Optional<Market> optionalM = currentMatch.getMarkets().stream().filter(m -> m.getId().equals((long) mlo.getId())).findFirst();
+
+                    if (optionalM.isPresent()) {
+                        Market updatedMarket = optionalM.get();
+                        updatedMarket.setActive(mlo.isActive());
+
+                        List<Selection> selections = new ArrayList<>();
+                        for (OddField of : mlo.getOddFieldsList()) {
+                            Selection selection = new Selection();
+                            selection.setName(of.getType());
+                            selection.setOdd(of.getValue());
+                            selection.setActive(of.isActive());
+                            selections.add(selection);
+                        }
+
+                        updatedMarket.setSelections(selections);
+                    }
+                } else {
+                /*add new market*/
+                    Market m = new Market();
+                    m.setName(mlo.getTitle());
+                    m.setId((long) mlo.getId());
+                    m.setActive(mlo.isActive());
+
+                    List<Selection> selections = new ArrayList<>();
+                    for (OddField of : mlo.getOddFieldsList()) {
+                        Selection selection = new Selection();
+                        selection.setName(of.getType());
+                        selection.setOdd(of.getValue());
+                        selection.setActive(of.isActive());
+                        selections.add(selection);
+                    }
+                    m.setSelections(selections);
+                    newMarkets.add(m);
+                }
             }
-            m.setSelections(selections);
+
+
+            currentMatch.getMarkets().addAll(newMarkets);
+
+            if (currentMessage.getMessageStatus().equals(MessageStatusLiveOdds.CLEARBET)) {
+
+                    /*result outcomes*/
+
+                for (MarketLiveOdds mlo : marketLiveOdds) {
+                    for (OddField of : mlo.getOddFieldsList()) {
+                        if (of.isFinalOutcome() && !mlo.isActive()) {
+                            System.out.println("Market " + mlo.getType() + "is cleared. Outcome " + of.getType() + " wins");
+                        }
+                    }
+                }
+            }
         }
 
-        if (currentMessage.getMessageStatus().equals(MessageStatusLiveOdds.CHANGE)){
-
-
-        }else if (currentMessage.getMessageStatus().equals(MessageStatusLiveOdds.CLEARBET)) {
-
-            /*result outcomes*/
+        for (Market m : currentMatch.getMarkets()){
+            marketRepository.save(m);   
         }
     }
+
+
 
     /*protected List<BasicEventDataBetradar> getBasicEventDataListForMeta(LiveOddsMessage currentMessage)
     {
@@ -978,6 +1046,9 @@ public class ParserLiveOdds
     @Data
     @NoArgsConstructor
     class LiveOddsMessage {
+        @Id
+        long id;
+
         long currentTimestamp, time, startTime, endTime, replyNr;
         MessageStatusLiveOdds messageStatus = null;
         MessageTypeLiveOdds messageType = null;

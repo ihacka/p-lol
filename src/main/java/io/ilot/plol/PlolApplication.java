@@ -3,21 +3,16 @@ package io.ilot.plol;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import io.ilot.plol.model.*;
-import io.ilot.plol.repos.EventRepository;
+import io.ilot.plol.model.board.Board;
+import io.ilot.plol.model.board.Member;
+import io.ilot.plol.repos.BoardRepository;
 import io.ilot.plol.repos.IncidentRepository;
 import io.ilot.plol.repos.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -26,7 +21,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
@@ -39,6 +33,7 @@ public class PlolApplication {
 		SpringApplication.run(PlolApplication.class, args);
 	}
 
+
 	@Bean
     CommandLineRunner UsersInitializer (UserRepository ur) {
         return args ->
@@ -49,6 +44,21 @@ public class PlolApplication {
                     new User("Christos", "christos@ilot.io", new BigDecimal(10000))
             ).forEach(ur::save);
     }
+
+    @Bean
+    CommandLineRunner BoardInitializer (UserRepository ur, BoardRepository br) {
+        return args -> {
+
+            Board board = new Board();
+
+            ur.findAll().stream()
+                    .map(user -> new Member(user))
+                    .forEach(m -> board.addMember(m));
+
+            br.save(board);
+        };
+    }
+
 
     @Bean
     CommandLineRunner Incidentinitializer (IncidentRepository ir) {
