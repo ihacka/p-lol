@@ -1187,7 +1187,7 @@ public class ParserLiveScout {
     private void processIncident(Supplier<Incident> s) {
         Incident incident = s.get();
         incident.setMinute(currentMinute+=2);
-        messageSender.convertAndSend(WebSocketTopic.PLAY.topicName(), s.get());
+        messageSender.convertAndSend(WebSocketTopic.PLAY.topicName(), incident);
         incidentRepository.save(s.get());
     }
 
