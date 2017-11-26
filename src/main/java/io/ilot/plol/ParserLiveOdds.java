@@ -14,7 +14,7 @@ import java.util.concurrent.Future;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.persistence.OneToOne;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
@@ -978,6 +978,8 @@ public class ParserLiveOdds
     @Data
     @NoArgsConstructor
     class LiveOddsMessage {
+        @Id
+        Long id;
         long currentTimestamp, time, startTime, endTime, replyNr;
         MessageStatusLiveOdds messageStatus = null;
         MessageTypeLiveOdds messageType = null;
