@@ -13,6 +13,7 @@ public class Market {
     @Id
     private Long id;
     private String name;
+    private boolean active;
     private List<Selection> selections;
 
     @ManyToOne

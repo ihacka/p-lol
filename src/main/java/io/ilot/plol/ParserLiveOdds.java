@@ -10,11 +10,14 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.Future;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
@@ -694,29 +697,74 @@ public class ParserLiveOdds
     private void handleCurrentMessage() throws XMLStreamException, IOException
     {
         /*update event markets*/
-        List <Market> markets = new ArrayList<>();
+        List <Market> newMarkets = new ArrayList<>();
+        List<Long> prevMarketIds = currentMatch.getMarkets().stream().map(m->m.getId()).collect(Collectors.toList());
 
-        for (MarketLiveOdds mlo : marketLiveOdds){
-            Market m = new Market();
-            m.setName(mlo.getTitle());
-            List<Selection> selections = new ArrayList<>();
-            for (OddField of : mlo.getOddFieldsList()){
-                Selection selection = new Selection();
-                selection.setOdd(of.getValue());
-                selection.setActive(of.isActive());
-                selections.add(selection);
+
+
+        if (currentMessage.getMessageStatus().equals(MessageStatusLiveOdds.CHANGE) || currentMessage.getMessageStatus().equals(MessageStatusLiveOdds.CLEARBET ))
+        {
+
+            for (MarketLiveOdds mlo : marketLiveOdds) {
+
+                if (prevMarketIds.contains(mlo.getId()) && mlo.isChanged()) {
+                /*update existing market*/
+                    Optional<Market> optionalM = currentMatch.getMarkets().stream().filter(m -> m.getId().equals((long) mlo.getId())).findFirst();
+
+                    if (optionalM.isPresent()) {
+                        Market updatedMarket = optionalM.get();
+                        updatedMarket.setActive(mlo.isActive());
+
+                        List<Selection> selections = new ArrayList<>();
+                        for (OddField of : mlo.getOddFieldsList()) {
+                            Selection selection = new Selection();
+                            selection.setName(of.getType());
+                            selection.setOdd(of.getValue());
+                            selection.setActive(of.isActive());
+                            selections.add(selection);
+                        }
+
+                        updatedMarket.setSelections(selections);
+                    }
+                } else {
+                /*add new market*/
+                    Market m = new Market();
+                    m.setName(mlo.getTitle());
+                    m.setId((long) mlo.getId());
+                    m.setActive(mlo.isActive());
+
+                    List<Selection> selections = new ArrayList<>();
+                    for (OddField of : mlo.getOddFieldsList()) {
+                        Selection selection = new Selection();
+                        selection.setName(of.getType());
+                        selection.setOdd(of.getValue());
+                        selection.setActive(of.isActive());
+                        selections.add(selection);
+                    }
+                    m.setSelections(selections);
+                    newMarkets.add(m);
+                }
             }
-            m.setSelections(selections);
+
+
+            currentMatch.getMarkets().addAll(newMarkets);
+
+            if (currentMessage.getMessageStatus().equals(MessageStatusLiveOdds.CLEARBET)) {
+
+                    /*result outcomes*/
+
+                for (MarketLiveOdds mlo : marketLiveOdds) {
+                    for (OddField of : mlo.getOddFieldsList()) {
+                        if (of.isFinalOutcome() && !mlo.isActive()) {
+                            System.out.println("Market " + mlo.getType() + "is cleared. Outcome " + of.getType() + " wins");
+                        }
+                    }
+                }
+            }
+        }
         }
 
-        if (currentMessage.getMessageStatus().equals(MessageStatusLiveOdds.CHANGE)){
 
-
-        }else if (currentMessage.getMessageStatus().equals(MessageStatusLiveOdds.CLEARBET)) {
-
-            /*result outcomes*/
-        }
-    }
 
     /*protected List<BasicEventDataBetradar> getBasicEventDataListForMeta(LiveOddsMessage currentMessage)
     {
@@ -978,6 +1026,8 @@ public class ParserLiveOdds
     @Data
     @NoArgsConstructor
     class LiveOddsMessage {
+        @Id
+        long id;
         long currentTimestamp, time, startTime, endTime, replyNr;
         MessageStatusLiveOdds messageStatus = null;
         MessageTypeLiveOdds messageType = null;
