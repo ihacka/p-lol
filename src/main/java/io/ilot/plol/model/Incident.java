@@ -19,6 +19,7 @@ public class Incident {
     private IncidentType incidentType;
     private ParticipantType participantType;
     private Date when = new Date();
+    private Integer minute;
 
     public Incident(Long eventId, IncidentType incidentType, ParticipantType participantType, Date when) {
         this.eventId = eventId;
