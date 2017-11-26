@@ -164,6 +164,7 @@ public class ParserLiveScout {
         }
     }
 
+
     private XMLInputFactory getXmlInputFactory2Instance() {
         XMLInputFactory xmlif = XMLInputFactory2.newInstance();
 
