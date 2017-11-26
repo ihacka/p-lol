@@ -203,6 +203,7 @@ public class ParserLiveScout {
                 succeeded = true;
 
             } catch (XMLStreamException e) {
+                succeeded = true;
                 e.printStackTrace();
             } /*catch (IOException e) {
                 if (useStoredMessages) {
