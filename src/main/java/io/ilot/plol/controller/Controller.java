@@ -90,6 +90,7 @@ class Controller /*implements ApplicationListener<IncidentApplicationEvent>*/ {
 
         //calculate winnings
         bet.setWinnings(new BigDecimal(10));
+        bet.setStatus(Bet.BetStatus.ACCEPTED);
         user.removeFromBalance(bet.getStake());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(betRepository.save(bet));
