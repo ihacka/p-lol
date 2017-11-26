@@ -183,31 +183,32 @@ public class ParserLiveScout {
             try {
                 String storedMessagesFolder = folderToReadMessagesFrom;
                 ClassLoader classLoader = getClass().getClassLoader();
-                File storedFile = new File(classLoader.getResource(storedMessagesFolder+ (messageCounter) + ".xml").getFile());
+                //File storedFile = new File(classLoader.getResource(storedMessagesFolder+ (messageCounter) + ".xml").getFile());
 //                File storedFile = new File(storedMessagesFolder + (messageCounter) + ".xml");
-                int counter = 0;
+                InputStream in = classLoader.getResourceAsStream(storedMessagesFolder+ (messageCounter) + ".xml");
+               /* int counter = 0;
                 while (!storedFile.exists() && counter < 100000) {
                     counter++;
                     storedFile = new File(classLoader.getResource(storedMessagesFolder+ (messageCounter) + ".xml").getFile());
                 }
-                FileInputStream fin = new FileInputStream(storedFile);
+                FileInputStream fin = new FileInputStream(storedFile);*/
 
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                xmlr = (XMLStreamReader) xmlif.createXMLStreamReader(fin);
+                xmlr = (XMLStreamReader) xmlif.createXMLStreamReader(in);
                 succeeded = true;
 
             } catch (XMLStreamException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
+            } /*catch (IOException e) {
                 if (useStoredMessages) {
                     System.out.println("All stored messages parsed.");
                     break;
                 }
-            }
+            }*/
         }
         return xmlr;
     }
