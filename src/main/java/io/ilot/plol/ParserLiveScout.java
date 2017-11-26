@@ -52,6 +52,8 @@ public class ParserLiveScout {
 
     private long lastMessageTimestamp = 0;
 
+    private int currentMinute;
+
     //    @Interceptors({ParsersInterceptor.class})
     public void startParser() throws Exception {
         System.out.println("Parser Live Scout Started");
@@ -1182,10 +1184,11 @@ public class ParserLiveScout {
     }
 
     private void processIncident(Supplier<Incident> s) {
+        Incident incident = s.get();
+        incident.setMinute(currentMinute+=2);
         messageSender.convertAndSend(WebSocketTopic.PLAY.topicName(), s.get());
         incidentRepository.save(s.get());
     }
-
 
     @Entity
     @Data
