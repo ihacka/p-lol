@@ -48,7 +48,7 @@ public class ParserLiveScout {
     private boolean xmlDocEnded = false;
 
     private boolean useStoredMessages = false;
-    private String folderToReadMessagesFrom = "C:\\SCOUTMessages\\ArsenalVSTot\\";
+    private String folderToReadMessagesFrom = "feed/scout/";
 
     private long lastMessageTimestamp = 0;
 
@@ -127,7 +127,7 @@ public class ParserLiveScout {
                 waitTimeSinceLastMessage = " (time since last xml " + (currentTimestamp - lastMessageTimestamp) + "ms)";
             }
             lastMessageTimestamp = currentTimestamp;
-//            System.out.println("Parser Live Scout - Received xml no:"+messageCounter + waitTimeSinceLastMessage);
+            System.out.println("Parser Live Scout - Received xml no:"+messageCounter + waitTimeSinceLastMessage);
             handleCurrentMessage();
             xmlDocEnded = true;
             currentMessage = null;
@@ -182,11 +182,13 @@ public class ParserLiveScout {
         while (!succeeded) {
             try {
                 String storedMessagesFolder = folderToReadMessagesFrom;
-                File storedFile = new File(storedMessagesFolder + (messageCounter) + ".xml");
+                ClassLoader classLoader = getClass().getClassLoader();
+                File storedFile = new File(classLoader.getResource(storedMessagesFolder+ (messageCounter) + ".xml").getFile());
+//                File storedFile = new File(storedMessagesFolder + (messageCounter) + ".xml");
                 int counter = 0;
                 while (!storedFile.exists() && counter < 100000) {
                     counter++;
-                    storedFile = new File(storedMessagesFolder + (++messageCounter) + ".xml");
+                    storedFile = new File(classLoader.getResource(storedMessagesFolder+ (messageCounter) + ".xml").getFile());
                 }
                 FileInputStream fin = new FileInputStream(storedFile);
 
@@ -1178,6 +1180,7 @@ public class ParserLiveScout {
 
     private void processIncident(Supplier<Incident> s) {
         messageSender.convertAndSend(WebSocketTopic.PLAY.topicName(), s.get());
+        incidentRepository.save(s.get());
     }
 
 

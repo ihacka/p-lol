@@ -13,6 +13,9 @@ public class Market {
     @Id
     private Long id;
     private String name;
+    private boolean active;
+
+    @OneToMany
     private List<Selection> selections;
 
     @ManyToOne
