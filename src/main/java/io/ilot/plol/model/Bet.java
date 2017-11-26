@@ -25,8 +25,13 @@ public class Bet {
     private Date placedTime = new Date();
     @OneToOne
     private User user;
+    private BetStatus status;
 
     public BigDecimal getPayout() {
         return Optional.ofNullable(payout).map(p -> p.subtract(stake)).orElse(BigDecimal.ZERO);
+    }
+
+    public enum BetStatus {
+        ACCEPTED, REJECTED, CANCELLED, SETTLED; //CASHED_OUT
     }
 }
