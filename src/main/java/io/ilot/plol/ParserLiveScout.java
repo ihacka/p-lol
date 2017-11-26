@@ -55,7 +55,7 @@ public class ParserLiveScout {
     //    @Interceptors({ParsersInterceptor.class})
     public void startParser() throws Exception {
         System.out.println("Parser Live Scout Started");
-        incidentRepository.save(new Incident(currentMatch.getId(), IncidentType.FREE_KICK, null, getCurrentDate()));
+        //incidentRepository.save(new Incident(currentMatch.getId(), IncidentType.FREE_KICK, null, getCurrentDate()));
 
         XMLStreamReader xmlr = null;
 
