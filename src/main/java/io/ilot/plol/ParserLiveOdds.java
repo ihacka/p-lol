@@ -23,9 +23,11 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 import io.ilot.plol.model.*;
+import io.ilot.plol.repos.MarketRepository;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.codehaus.stax2.XMLInputFactory2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -33,6 +35,8 @@ import org.springframework.stereotype.Component;
 public class ParserLiveOdds
 {
 
+    @Autowired
+    MarketRepository marketRepository;
     private InputStream inputStream;
     private OutputStream outputStream;
 
@@ -112,8 +116,8 @@ public class ParserLiveOdds
                             else if (endElementName.equals(ConstantsLiveOdds.E_MATCH))
                             {
 //                                currentMessage.addSportEvent(currentMatch);
-                                currentMatch = null;
-                                currentClearedScore = null;
+//                                currentMatch = null;
+//                                currentClearedScore = null;
                             }
                             else if (endElementName.equals(ConstantsLiveOdds.E_ODDS))
                             {
@@ -139,7 +143,7 @@ public class ParserLiveOdds
             e.printStackTrace();
 
             currentMessage = null;
-            currentMatch = null;
+//            currentMatch = null;
             currentOdd = null;
             if (useStoredMessages)
                 messageCounter = 1;
@@ -392,19 +396,29 @@ public class ParserLiveOdds
 
     private void parseMatchElement(XMLStreamReader xmlr) throws XMLStreamException
     {
-       /* Event match;
+  /*      Event match = new Event();
+        match.setId(Long.parseLong(xmlr.getAttributeValue(null, ConstantsLiveOdds.A_MATCH_MATCHID)));
 //		long matchID = Long.parseLong(xmlr.getAttributeValue(null, ConstantsLiveOdds.A_MATCH_MATCHID));
 //		if (activeMatches.containsKey(matchID))
 //			match = activeMatches.get(matchID);
 //		else
-        match = new Event();
+//        match = new Event();*/
 
-        //We use this if/else way because the Match element doesn't always have the same number of attributes.
-        for (int i=0; i<xmlr.getAttributeCount(); i++)
-        {
-            String attrName = xmlr.getAttributeLocalName(i);
+        if (currentMatch==null) {
+            currentMatch = new Event();
+            //We use this if/else way because the Match element doesn't always have the same number of attributes.
+            for (int i = 0; i < xmlr.getAttributeCount(); i++) {
+                String attrName = xmlr.getAttributeLocalName(i);
+                if (attrName.equals(ConstantsLiveOdds.A_MATCH_MATCHID))
+                    currentMatch.setId(xmlr.getAttributeValue(i) != null ? Long.parseLong(xmlr.getAttributeValue(i)) : null);
+                else {
+
+                }
+            }
+        }
+            /*String attrName = xmlr.getAttributeLocalName(i);
             if (attrName.equals(ConstantsLiveOdds.A_MATCH_ACTIVE))
-                match.setActive(xmlr.getAttributeAsBoolean(i));
+//                match.setActive(xmlr.getAttributeAsBoolean(i));
             else if (attrName.equals(ConstantsLiveOdds.A_MATCH_MATCHID))
                 match.setId(xmlr.getAttributeAsInt(i));
             else if (attrName.equals(ConstantsLiveOdds.A_MATCH_BETSTATUS))
@@ -692,9 +706,15 @@ public class ParserLiveOdds
 
     private void handleCurrentMessage() throws XMLStreamException, IOException
     {
+
+        if (currentMatch== null)
+            return;
         /*update event markets*/
         List <Market> newMarkets = new ArrayList<>();
-        List<Long> prevMarketIds = currentMatch.getMarkets().stream().map(m->m.getId()).collect(Collectors.toList());
+        List<Long> prevMarketIds = new ArrayList<>();
+        if (currentMatch.getMarkets()==null)
+            currentMatch.setMarkets(new ArrayList<>());
+        prevMarketIds = currentMatch.getMarkets().stream().map(m->m.getId()).collect(Collectors.toList());
 
 
 
@@ -758,7 +778,11 @@ public class ParserLiveOdds
                 }
             }
         }
+
+        for (Market m : currentMatch.getMarkets()){
+            marketRepository.save(m);   
         }
+    }
 
 
 
