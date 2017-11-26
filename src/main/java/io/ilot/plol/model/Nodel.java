@@ -30,7 +30,7 @@ public class Nodel {
 
     @Entity @Data @NoArgsConstructor public static class Board {
         @Id @GeneratedValue private Long id;
-        @ManyToOne
+        @OneToMany
         private List<Member> members;
 
 //        private BigDecimal getPool(){
@@ -40,12 +40,14 @@ public class Nodel {
 //        }
     }
 
-    @Data @NoArgsConstructor public static class Member {
+    @Data @NoArgsConstructor
+    @Entity public static class Member {
         @Id @GeneratedValue private Long id;
         @ManyToOne
         private Board board;
         @ManyToOne
         private User user;
+        @OneToMany
         private List<Bet> placedBets;
 
 

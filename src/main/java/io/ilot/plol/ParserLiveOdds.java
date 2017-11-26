@@ -11,16 +11,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 
@@ -29,7 +26,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.codehaus.stax2.XMLInputFactory2;
 import org.codehaus.stax2.XMLStreamReader2;
-import org.codehaus.stax2.XMLStreamWriter2;
 import org.springframework.stereotype.Component;
 
 
@@ -1028,6 +1024,7 @@ public class ParserLiveOdds
     class LiveOddsMessage {
         @Id
         long id;
+
         long currentTimestamp, time, startTime, endTime, replyNr;
         MessageStatusLiveOdds messageStatus = null;
         MessageTypeLiveOdds messageType = null;
