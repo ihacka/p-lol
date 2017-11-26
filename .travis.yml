@@ -6,5 +6,5 @@ jdk:
  deploy:
   provider: heroku
   api-key:
-  secure: 3f00adfe-4486-4f06-9155-a075bfa69acc
+  secure: $HEROKU_API_KEY
   app: p-lol
