@@ -3,3 +3,4 @@ jdk:
  - oraclejdk8
  os:
  - linux
+ install: mvn clean install -B -V
