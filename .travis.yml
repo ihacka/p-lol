@@ -1,10 +1,10 @@
 language: java
 jdk:
  - oraclejdk8
- os:
- - linux
- deploy:
-  provider: heroku
-  api-key:
+os:
+- linux
+deploy:
+ provider: heroku
+ api-key:
   secure: $HEROKU_API_KEY
-  app: p-lol
+ app: p-lol
