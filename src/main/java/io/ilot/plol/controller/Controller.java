@@ -1,6 +1,7 @@
 package io.ilot.plol.controller;
 
 
+import io.ilot.plol.ParserLiveOdds;
 import io.ilot.plol.ParserLiveScout;
 import io.ilot.plol.event.IncidentApplicationEvent;
 import io.ilot.plol.event.PlolEventPublisher;
@@ -40,6 +41,8 @@ class Controller /*implements ApplicationListener<IncidentApplicationEvent>*/ {
     private EventRepository eventRepository;
     @Autowired
     private ParserLiveScout parserLiveScout;
+    @Autowired
+    private ParserLiveOdds parserLiveOdds;
     @Autowired
     PlolEventPublisher plolEventPublisher;
 
@@ -98,10 +101,19 @@ class Controller /*implements ApplicationListener<IncidentApplicationEvent>*/ {
     }
 
 
-    @RequestMapping("/scout/start")
+    @RequestMapping("parser/scout/start")
     public void startScoutParser() {
         try {
             parserLiveScout.startParser();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("parser/odds/start")
+    public void startOddsParser() {
+        try {
+            parserLiveOdds.startParser();
         } catch (Exception e) {
             e.printStackTrace();
         }
